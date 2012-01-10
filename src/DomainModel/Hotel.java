@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package DomainModel;
 
 import TupleTypes.DadesHabitacio;
@@ -13,6 +9,7 @@ import java.util.Set;
 /**
  *
  * @author elena
+ * @author clara
  */
 public class Hotel {
     String nom;
@@ -51,11 +48,11 @@ public class Hotel {
     public String getNom(){
         return this.nom;
     }
+    
     /**
      * retorna la descripcio de l'hotel 
      * @return 
      */
-    
     public String getDescripcio(){
         return this.descripcio;
     }
@@ -139,10 +136,7 @@ public class Hotel {
      * @param dataFi
      * @return p*dies
      */
-    
-    
     public float obtePreuTotal(String tipushab, Date datainici, Date dataFi){
-        boolean trobat = false;
         Integer TEMPS = 24*60*60*1000;
         float p = 0;
         for(PreuTipusHabitacio pr : preus) {
@@ -165,15 +159,11 @@ public class Hotel {
      * @param dataFi
      * @return num
      */
-    
-
-
-    public Integer obteNumeroHabLliure(String tipushab, Date datainici, Date dataFi){
+    public Integer obteNumeroHabLliure(String tipushab, Date dataInici, Date dataFi){
         Integer num = 0;
-        boolean trobat = false;
         for(PreuTipusHabitacio p : preus){
             if(p.isOfType(tipushab)){
-                num = p.obteNumeroHabLliure(nom, dataFi, dataFi);
+                num = p.obteNumeroHabLliure(nom, dataInici, dataFi);
                 break;
             }
         }
@@ -190,32 +180,28 @@ public class Hotel {
      * @param dh
      * @return cert si l'hotel està disponible, false altrament.
      */
-    
-    
-    public boolean estaDisp(Date dIni, Date dFi,Integer numOc, DadesHotel dh) {
-        DadesHabitacio dhab = null;
-        Set<DadesHabitacio> habs = new HashSet();
-        boolean trobat = false;
+    public boolean estaDisp(Date dIni, Date dFi, Integer numOc, DadesHotel dh) {
+        Set<DadesHabitacio> habs = new HashSet<DadesHabitacio>();
+
         for(PreuTipusHabitacio p : preus){
-            Integer var = 0;
-            if((var = p.numDisp(dIni, dFi, nom, numOc)) > 0){
-                dhab.preu = p.calculaPreu();
-                dhab.tipusHab = p.getNomTipus();
-                dhab.numeroDisp = var; 
-                habs.add(dhab);
-                trobat = true;
+            Integer numDisponibles = p.numDisp(dIni, dFi, nom, numOc);
+            if(numDisponibles > 0){
+                DadesHabitacio dadesHabitacio = new DadesHabitacio();
+                dadesHabitacio.preu = p.calculaPreu();
+                dadesHabitacio.tipusHab = p.getNomTipus();
+                dadesHabitacio.numeroDisp = numDisponibles; 
+                habs.add(dadesHabitacio);
             }
         }
         
-        if(trobat){
+        if(!habs.isEmpty()){
             dh.avaluacio = this.mitjaAval();
             dh.categoria = this.categoria.getNom();
             dh.desc = this.descripcio;
             dh.nom = this.nom;
             dh.habs = habs;
-            return true;
         }
-        return false;
+        return !habs.isEmpty();
     }
 
     

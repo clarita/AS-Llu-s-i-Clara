@@ -11,13 +11,12 @@ import org.hibernate.Session;
 /**
  * Controlador de cada de gestió de dades encarregat de recuperar 
  * instancies de poblacions.
- * @author elena
+ * @author clara
  */
 public class CtrlPoblacio implements ICtrlPoblacio{
 
     @Override
     public Poblacio get(String nom) throws Exception{
-        //throw new UnsupportedOperationException("Not supported yet.");
         Session session = null; 
         Poblacio p = null;
         try {
@@ -32,6 +31,7 @@ public class CtrlPoblacio implements ICtrlPoblacio{
     }
 
     
+    @Override
     public ArrayList<Poblacio> tots() {
         ArrayList<Poblacio> resultat = new ArrayList<Poblacio>();
         Session session = null; 
