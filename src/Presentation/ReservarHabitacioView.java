@@ -160,11 +160,11 @@ public class ReservarHabitacioView {
      * crida a la funcio del controlador per a canviar de pantalla de la 3 a la 4 i li passa el dni que han introduït
      * com a nova informació 
      * @param Tdni
-     * @author elena
+     * @author elena & clara
      */
-    void confirmacioWindow3(JTextField Tdni) {
+    void confirmacioWindow3(String dni) {
         //throw new UnsupportedOperationException("Not yet implemented");
-        controlador.PrOkIntroduirDni(Tdni.toString());
+        controlador.PrOkIntroduirDni(dni);
     }
     
     

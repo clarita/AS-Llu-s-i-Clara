@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author clara i elena 
+ * @author clara 
  */
 public class ReservarHabitacioController {
     
@@ -129,7 +129,7 @@ public class ReservarHabitacioController {
      * Transició entre la pantalla 2 i 3
      * @param hotel
      * @param tipusHab 
-     * @author elena
+     * @author elena i clara
      */
     public void PrOkSeleccionarHabitacio(String hotel, String tipusHab) {
         try {

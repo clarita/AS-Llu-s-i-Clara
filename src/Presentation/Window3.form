@@ -28,18 +28,17 @@
                   <Component id="Terror" alignment="0" pref="515" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="numOcLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="hotelLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="poblacio" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dIni" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="preuTotal" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dFI" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="habitacio" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dni" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="numOc" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="hotel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dIniLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dFILabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="habitacioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="preuTotalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dniLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Tdni" min="-2" max="-2" attributes="0"/>
                           <Component id="Tpoblacio" min="-2" max="-2" attributes="0"/>
                           <Component id="TdIni" min="-2" max="-2" attributes="0"/>
                           <Component id="TdFi" min="-2" max="-2" attributes="0"/>
@@ -47,6 +46,7 @@
                           <Component id="Thotel" min="-2" max="-2" attributes="0"/>
                           <Component id="Thabitacio" min="-2" max="-2" attributes="0"/>
                           <Component id="Tpreu" min="-2" max="-2" attributes="0"/>
+                          <Component id="dniValueTextField" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -68,43 +68,43 @@
                   <Component id="Tpoblacio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="dIni" min="-2" max="-2" attributes="0"/>
-                  <Component id="TdIni" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="TdIni" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dIniLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="dFI" min="-2" max="-2" attributes="0"/>
-                  <Component id="TdFi" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="TdFi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dFILabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TnOcup" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="numOc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numOcLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Thotel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="hotel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="hotelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="habitacio" min="-2" max="-2" attributes="0"/>
-                  <Component id="Thabitacio" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="preuTotal" min="-2" max="-2" attributes="0"/>
-                  <Component id="Tpreu" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="dni" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Tdni" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Thabitacio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitacioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Tpreu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="preuTotalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dniLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dniValueTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="Terror" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="9" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="dacord" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancela" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -120,42 +120,42 @@
         <Property name="text" type="java.lang.String" value="Poblaci&#xf3;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="dIni">
+    <Component class="javax.swing.JLabel" name="dIniLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Data d&apos;inici"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="dFI">
+    <Component class="javax.swing.JLabel" name="dFILabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Data de finalitzaci&#xf3;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="numOc">
+    <Component class="javax.swing.JLabel" name="numOcLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="N&#xfa;mero d&apos;ocupants"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="hotel">
+    <Component class="javax.swing.JLabel" name="hotelLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hotel"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="habitacio">
+    <Component class="javax.swing.JLabel" name="habitacioLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Habitaci&#xf3;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="preuTotal">
+    <Component class="javax.swing.JLabel" name="preuTotalLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Preu total"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="dni">
+    <Component class="javax.swing.JLabel" name="dniLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="DNI"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Tdni">
+    <Component class="javax.swing.JTextField" name="dniValueTextField">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField8"/>
       </Properties>
