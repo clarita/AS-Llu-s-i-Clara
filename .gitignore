@@ -1,0 +1,11 @@
+nbproject/private/
+.DS_Store
+build/
+nbproject/private/private.properties
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
