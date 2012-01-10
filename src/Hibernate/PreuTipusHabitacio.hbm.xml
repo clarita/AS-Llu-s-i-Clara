@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="DomainModel.PreuTipusHabitacio" table="PREUTIPUSHABITACIO" schema="APP">
+      <composite-id name="id" class="DomainModel.PreuTipusHabitacioId">
+            <key-property name="nomhotel" type="string">
+                <column name="NOMHOTEL" length="100" />
+            </key-property>
+            <key-property name="nomtipus" >
+                <column name="NOMTIPUS"/>
+            </key-property>
+        </composite-id>
+        <property name="preu" type="java.lang.Float">
+            <column name="PREU" precision="52" scale="0" />
+        </property>
+        <one-to-one name="strategy" class="DomainModel.IPreuStrategy" />
+        <!--many-to-one name="tipus" class="DomainModel.TipusHabitacio" column="NOMTIPUS" /-->
+  </class>
+</hibernate-mapping>

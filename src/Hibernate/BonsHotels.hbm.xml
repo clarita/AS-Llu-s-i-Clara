@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="DomainModel.BonsHotels" table="BONSHOTELS" schema="APP">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="quotaFixa" type="java.lang.Float">
+            <column name="QUOTAFIXA" precision="52" scale="0" />
+        </property>
+        <property name="quotaVariable" type="java.lang.Float">
+            <column name="QUOTAVARIABLE" precision="52" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="DomainModel.Poblacio" table="POBLACIO" schema="APP">
+      <id name="nom" type="string">
+            <column name="NOM" length="100" />
+            <generator class="assigned" />
+        </id>
+  </class>
+</hibernate-mapping>

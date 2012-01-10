@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/01/2012 13:08:59 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DomainModel.TipusHabitacio" table="TIPUSHABITACIO" schema="APP">
+        <id name="nom" type="string">
+            <column name="NOM" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="capacitat" type="java.lang.Integer">
+            <column name="CAPACITAT" />
+        </property>
+        <property name="descripcio" type="string">
+            <column name="DESCRIPCIO" length="300" />
+        </property>
+    </class>
+</hibernate-mapping>

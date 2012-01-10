@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="DomainModel.IPreuStrategy" table="PREUSTRATEGY" schema="APP">
+    <composite-id name="id" class="DomainModel.PreuTipusHabitacioId">
+        <key-property name="nomhotel" type="string">
+            <column name="NOMHOTEL" length="100" />
+        </key-property>
+        <key-property name="nomtipus" type="string">
+            <column name="NOMTIPUS" length="100" />
+        </key-property>
+    </composite-id>
+        
+    <discriminator column="TIPUS_STRATEGY" type="string" />
+    
+    <subclass name="DomainModel.AbsoluteDiscountPreuStrategy" discriminator-value="A">
+        <property name="descompte" type="float" column="DESCOMPTE" />
+    </subclass>
+    
+    <subclass name="DomainModel.PercentDiscountPreuStrategy" discriminator-value="P">
+        <property name="perc" type="float" column="PERCENTATGE" />
+    </subclass>
+    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="DomainModel.Hotel" table="HOTEL" schema="APP">
+        <id name="nom" type="string">
+            <column name="NOM" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcio" type="string">
+            <column name="DESCRIPCIO" length="300" />
+        </property>
+
+        <property name="nomPoblacio" type="string" column="NOMPOBLACIO" />
+
+        <many-to-one name="categoria" class="DomainModel.CategoriaHotel" 
+        column="NOMCATEGORIA"/>
+        
+        <set name="preus" table="PREUTIPUSHABITACIO" >
+            <key column="NOMHOTEL" />
+            <one-to-many class="DomainModel.PreuTipusHabitacio" />
+            
+        </set>
+        
+        <set name="comentaris" table="COMENTARI" >
+            <key column="NOMHOTEL" />
+            <one-to-many class="DomainModel.Comentari" />
+        </set>
+    </class>
+</hibernate-mapping>

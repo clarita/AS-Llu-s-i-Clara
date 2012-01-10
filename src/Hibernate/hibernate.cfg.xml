@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
+    <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/BonsHotelsBD</property>
+    <property name="hibernate.connection.username">as</property>
+    <property name="hibernate.connection.password">as</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
+    <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="Hibernate/Client.hbm.xml"/>
+    <mapping resource="Hibernate/PreuStrategy.hbm.xml"/>
+    <mapping resource="Hibernate/PreuTipusHabitacio.hbm.xml"/>
+    <mapping resource="Hibernate/Hotel.hbm.xml"/>
+    <mapping resource="Hibernate/Habitacio.hbm.xml"/>
+    <mapping resource="Hibernate/TipusHabitacio.hbm.xml"/>
+    <mapping resource="Hibernate/CategoriaHotel.hbm.xml"/>
+    <mapping resource="Hibernate/Poblacio.hbm.xml"/>
+    <mapping resource="Hibernate/BonsHotels.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

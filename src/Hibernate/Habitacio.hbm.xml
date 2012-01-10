@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/01/2012 13:08:59 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="DomainModel.Habitacio" table="HABITACIO" schema="APP">
+        <composite-id name="id" class="DomainModel.HabitacioId">
+            <key-property name="nomhotel" type="string">
+                <column name="NOMHOTEL" length="100" />
+            </key-property>
+            <key-property name="numero" type="int">
+                <column name="NUMERO" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/01/2012 13:08:59 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Hibernate.Reserva" table="RESERVA" schema="APP">
+        <composite-id name="id" class="Hibernate.ReservaId">
+            <key-property name="nomHotel" type="string">
+                <column name="NOMHOTEL" length="100" />
+            </key-property>
+            <key-property name="numeroHabitacio" type="int">
+                <column name="NUMEROHABITACIO" />
+            </key-property>
+            <key-property name="dataInici" type="date">
+                <column name="DATAINICI" length="10" />
+            </key-property>
+        </composite-id>
+        <property name="dniclient" type="string">
+            <column name="DNICLIENT" length="100" />
+        </property>
+        <property name="datareserva" type="date">
+            <column name="DATARESERVA" length="10" />
+        </property>
+        <property name="datafi" type="date">
+            <column name="DATAFI" length="10" />
+        </property>
+        <property name="idreserva" type="string">
+            <column name="IDRESERVA" length="100" unique="true"/>
+        </property>
+        <property name="preutotal" type="java.lang.Double">
+            <column name="PREUTOTAL" precision="52" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
