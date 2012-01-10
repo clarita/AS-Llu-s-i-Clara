@@ -4,59 +4,37 @@
  */
 package ServiceLocator;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 /**
  *
- * @author elena
+ * @author clara
  */
 public class ServiceLocator {
-    private InitialContext ic;
-    private Map cache;
+    
     private ServeiPagament sp;
 
-    private static ServiceLocator me;
-    
-    static {
-        try {
-            me = new ServiceLocator();
-        } catch(ServiceLocatorException se) {
-            System.err.println(se);
-            se.printStackTrace(System.err);
-        }
-    }
-    private ServiceLocator() throws ServiceLocatorException  {
-        try {
-            ic = new InitialContext();
-            cache = Collections.synchronizedMap(new HashMap());
-        } catch (NamingException ne) {
-            throw new ServiceLocatorException(ne);
-        }
+    private static ServiceLocator instance;
+
+    private ServiceLocator()  {
     }
     
     /**
-     * retorna la intància del ServiceLocator
+     * 
      * @return
-     * @throws ServiceLocatorException 
      */
-    
-    public static ServiceLocator getInstance() throws ServiceLocatorException {
-        if (me == null) {
-        me = new ServiceLocator();
+    public static ServiceLocator getInstance() {
+        if (instance == null) {
+            instance = new ServiceLocator();
         }
-        return me;
+        return instance;
     }
     
     /**
-     * retorna una intància del ServeiPagament
+     * retorna un ServeiPagament
      * @param Id identificador del servei 
      * @return 
      */
     public ServeiPagament find(String Id) {
+        if(this.sp == null) this.sp = new ServeiPagament();
         return this.sp;
     }
           

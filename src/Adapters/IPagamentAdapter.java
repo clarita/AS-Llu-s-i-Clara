@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Adapters;
 
 import java.util.Date;
@@ -9,6 +5,7 @@ import java.util.Date;
 /**
  *
  * @author elena_gratallops
+ * @author clara
  */
 public interface IPagamentAdapter {
     
@@ -18,7 +15,6 @@ public interface IPagamentAdapter {
      * @param dCad
      * @param preuTotal 
      */
-    
-    public boolean pagament(String numTarg, Date dCad, float preuTotal);
+    public void pagament(String numTarg, Date dCad, float preuTotal) throws Exception;
     
 }

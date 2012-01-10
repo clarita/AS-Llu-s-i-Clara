@@ -1,21 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Adapters;
 
 import ServiceLocator.ServeiPagament;
 import ServiceLocator.ServiceLocator;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author elena
+ * @author clara
  */
 public class PagamentAdapter implements IPagamentAdapter{
-    private ServiceLocator sl;
+
     private String id;
     
     /**
@@ -33,17 +28,14 @@ public class PagamentAdapter implements IPagamentAdapter{
      * @return true si el pagament s'ha executat amb èxit 
      */
     @Override
-    public boolean pagament(String numTarg, Date dCad, float preuTotal) {
-        //throw new UnsupportedOperationException("Not supported yet.");
-            ServeiPagament spag = sl.find(this.id);
-            if (spag == null) try {
-            throw new Exception("hotelsNoDisp");
-            } catch (Exception ex) {
-            Logger.getLogger(PagamentAdapter.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            Date d = new Date();
-            return spag.autoritza(numTarg, dCad, preuTotal,d);
+    public void pagament(String numTarg, Date dCad, float preuTotal) throws Exception{
+        ServiceLocator serviceLocator = ServiceLocator.getInstance();
+        ServeiPagament serveiPagament = serviceLocator.find("ServeiPagament");
         
-        } 
+        if (!serveiPagament.autoritza(numTarg, dCad, preuTotal,new Date())) {
+            throw new Exception("serveiNoDisponible");
+        }
+        
+    } 
 }
     

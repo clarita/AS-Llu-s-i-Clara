@@ -13,7 +13,7 @@ import java.util.Date;
 public class ServeiPagament {
     public String Id;
     
-    private ServeiPagament(){};
+    public ServeiPagament(){};
     
     public boolean autoritza(String numTarg, Date dCad, float preuTotal, Date d) {
         //throw new UnsupportedOperationException("Not yet implemented");
