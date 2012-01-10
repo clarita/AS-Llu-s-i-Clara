@@ -9,7 +9,7 @@
             <key-property name="dniClient" type="string">
                 <column name="DNICLIENT" length="100" />
             </key-property>
-            <key-property name="data" type="java.util.Date">
+            <key-property name="data" type="date">
                 <column name="DATA" length="10" />
             </key-property>
         </composite-id>
