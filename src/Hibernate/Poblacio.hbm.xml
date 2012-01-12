@@ -5,6 +5,10 @@
       <id name="nom" type="string">
             <column name="NOM" length="100" />
             <generator class="assigned" />
-        </id>
+      </id>
+      <set name="hotels" table="HOTEL" >
+            <key column="NOMPOBLACIO" />
+            <one-to-many class="DomainModel.Hotel" />
+      </set>
   </class>
 </hibernate-mapping>

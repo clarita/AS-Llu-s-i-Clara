@@ -76,10 +76,10 @@ public class PoblacioTest {
         assertEquals(nom, "Gratallops");
     }
     
-    
+ /*   
     
     @Test
-    public void testgetDisponibles() throws Exception {
+    public void testGetDisponibles() throws Exception {
         System.out.println("getDisponibles");
         Integer numOc = null;
         Date dIni = null;
@@ -90,4 +90,7 @@ public class PoblacioTest {
         Object[] res = result.toArray();
         assertEquals(r, res);
     }
+     * 
+     * 
+     */
 }
