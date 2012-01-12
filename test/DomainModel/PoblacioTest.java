@@ -4,6 +4,7 @@
  */
 package DomainModel;
 
+import java.util.HashSet;
 import java.util.ArrayList;
 import TupleTypes.DadesHotel;
 import java.util.Set;
@@ -20,6 +21,7 @@ import static org.junit.Assert.*;
 /**
  *
  * @author elena_gratallops
+ * @author lluisgh28
  */
 public class PoblacioTest {
     private static Session session;
@@ -34,6 +36,12 @@ public class PoblacioTest {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             Poblacio pob = new Poblacio("Gratallops");
+            Set<Hotel> hotels = new HashSet<Hotel>();
+            CategoriaHotel c = new CategoriaHotel("cat");
+            Hotel h = new Hotel("nomHotel", "des", "nomPoblacio", c);
+            hotels.add(h);
+            pob.setHotels(hotels);
+            session.persist(pob);
             
         } catch (RuntimeException e) {
             session.getTransaction().rollback();
@@ -76,7 +84,7 @@ public class PoblacioTest {
         Integer numOc = null;
         Date dIni = null;
         Date dFi = null;
-        Poblacio pob = new Poblacio();
+        Poblacio pob = (Poblacio) session.get(Poblacio.class, "Gratallops");
         Set<DadesHotel> result = pob.getDisponibles(dIni, dFi, numOc);
         ArrayList<DadesHotel> r = null;
         Object[] res = result.toArray();
