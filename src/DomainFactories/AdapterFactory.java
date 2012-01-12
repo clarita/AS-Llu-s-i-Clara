@@ -25,7 +25,7 @@ public class AdapterFactory {
      * retorna la instància de la factoria i si no existia la crea
      * @return 
      */
-    public static AdapterFactory getInstances() {
+    public static AdapterFactory getInstance() {
         if(instance == null) instance = new AdapterFactory();
         return instance;
     }
