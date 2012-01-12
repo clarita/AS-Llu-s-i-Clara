@@ -10,6 +10,9 @@
  */
 package Presentation;
 
+import TupleTypes.DadesReserva;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author lluisgh28
@@ -19,6 +22,23 @@ public class Window4 extends javax.swing.JFrame {
     /** Creates new form Window4 */
     public Window4() {
         initComponents();
+    }
+    
+    public void mostraClient(DadesReserva dades) {
+        poblacioValueLabel.setText(dades.pob);
+        SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+        dataIniciValueLabel.setText(s.format(dades.dIni));
+        dataFiValueLabel.setText(s.format(dades.dFi));
+        numOcupValueLabel.setText(dades.numOc.toString());
+        hotelValueLabel.setText(dades.nomHotel);
+        habitacioValueLabel.setText(dades.nomTipusHab);
+        preuTotalValueLabel.setText(dades.preuTotal.toString());
+        dniValueLabel.setText(dades.dni);
+        nomValueLabel.setText(dades.nomClient);
+        cognomsValueLabel.setText(dades.cognomsClient);
+        emailValueLabel.setText(dades.emailClient);
+                
+        
     }
 
     /** This method is called from within the constructor to
