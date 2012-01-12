@@ -6,6 +6,7 @@
             <column name="NOM" length="100" />
             <generator class="assigned" />
         </id>
+        
         <property name="descripcio" type="string">
             <column name="DESCRIPCIO" length="300" />
         </property>

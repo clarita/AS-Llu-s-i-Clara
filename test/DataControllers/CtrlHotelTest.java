@@ -23,6 +23,9 @@ import static org.junit.Assert.*;
 public class CtrlHotelTest {
     
     private static Session session = null;
+    private static String nomCategoria = "categoria de prova";
+    private static String nomPoblacio = "ciutat de prova";
+    private static String nomHotel = "hotel de prova";
     
     public CtrlHotelTest() {
     }
@@ -34,12 +37,12 @@ public class CtrlHotelTest {
             session.beginTransaction();
             
             //Insertem instàncies via hibernate per mirar si es recuperen bé
-            CategoriaHotel categoria = new CategoriaHotel("categoria de prova");
-            session.persist(categoria);
-            Poblacio poblacio = new Poblacio("Ciutat de prova");
-            session.persist(poblacio);
-            Hotel hotel = new Hotel("Hotel de prova","Luxós hotel al centre de la ciutat.","Ciutat de prova",categoria);
-            session.persist(hotel);
+            CategoriaHotel categoria = new CategoriaHotel(nomCategoria);
+            session.saveOrUpdate(categoria);
+            Poblacio poblacio = new Poblacio(nomPoblacio);
+            session.saveOrUpdate(poblacio);
+            Hotel hotel = new Hotel(nomHotel,"Luxós hotel al centre de la ciutat.","Ciutat de prova",categoria);
+            session.saveOrUpdate(hotel);
         } catch (RuntimeException e) {
             session.getTransaction().rollback();
             e.printStackTrace();
@@ -49,10 +52,12 @@ public class CtrlHotelTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
         if (session != null) {
-            Hotel hotel = (Hotel) session.get(Hotel.class, "Hotel de prova");
+            Hotel hotel = (Hotel) session.get(Hotel.class, nomHotel);
             session.delete(hotel);
-            Poblacio poblacio = (Poblacio) session.get(Poblacio.class, "Ciutat de prova");
+            Poblacio poblacio = (Poblacio) session.get(Poblacio.class, nomPoblacio);
             session.delete(poblacio);
+            CategoriaHotel categoria = (CategoriaHotel) session.get(CategoriaHotel.class, nomCategoria);
+            session.delete(categoria);
             session.getTransaction().commit();
         }
     }
@@ -71,7 +76,7 @@ public class CtrlHotelTest {
     @Test
     public void testGet() throws Exception {
         System.out.println("get");
-        String nom = "Hotel de prova";
+        String nom = nomHotel;
         CtrlHotel instance = new CtrlHotel();
         Hotel result = instance.get(nom);
         String nomHotel = result.getNom();

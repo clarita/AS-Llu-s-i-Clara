@@ -10,9 +10,10 @@ package DomainModel;
  */
 public class CategoriaHotel {
     
-    String nom;
+    private String nom;
     
     public CategoriaHotel(){};
+    
     /**
      * creadora 
      * @param cat 
@@ -21,6 +22,7 @@ public class CategoriaHotel {
         this.nom = cat;
        
     }
+    
     /**
      * 
      * @return el nom de la categoria 
