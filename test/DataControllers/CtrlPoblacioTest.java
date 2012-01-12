@@ -18,9 +18,12 @@ import static org.junit.Assert.*;
 /**
  *
  * @author elena_gratallops
+ * @author clara
  */
 public class CtrlPoblacioTest {
     private static Session session;
+    private static String nomPoblacio1 = "prova1";
+    private static String nomPoblacio2 = "prova2";
     
     public CtrlPoblacioTest() {
     }
@@ -30,30 +33,25 @@ public class CtrlPoblacioTest {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            Poblacio p1 = new Poblacio("Gratallops");
-            session.persist(p1);
-            Poblacio p2 = new Poblacio("Falset");
-            session.persist(p2);
+            Poblacio p1 = new Poblacio(nomPoblacio1);
+            session.saveOrUpdate(p1);
+            Poblacio p2 = new Poblacio(nomPoblacio2);
+            session.saveOrUpdate(p2);
         }catch(RuntimeException e){
             session.getTransaction().rollback();
             e.printStackTrace();
         }
-        
-    
-    
-    
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
         if (session != null) {
-            Poblacio poblacio =  (Poblacio) session.get(Poblacio.class, "Gratallops");
-            session.delete(poblacio);
-            Poblacio po = (Poblacio) session.get(Poblacio.class, "Falset");
-            session.delete(po);
+            Poblacio poblacio1 =  (Poblacio) session.get(Poblacio.class, nomPoblacio1);
+            session.delete(poblacio1);
+            Poblacio poblacio2 = (Poblacio) session.get(Poblacio.class, nomPoblacio2);
+            session.delete(poblacio2);
             session.getTransaction().commit();
         }
-        
     }
     
     @Before
@@ -63,17 +61,14 @@ public class CtrlPoblacioTest {
     @After
     public void tearDown() {
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
+    
     @Test
     public void testGet() throws Exception {
         System.out.println("get");
-        String nom = "Gratallops";
         CtrlPoblacio instance = new CtrlPoblacio();
-        Poblacio result = instance.get(nom);
+        Poblacio result = instance.get(nomPoblacio1);
         String nomPoblacio = result.getNom();
-        assertEquals(nom, nomPoblacio);
+        assertEquals(nomPoblacio1, nomPoblacio);
     
     }
     
@@ -82,16 +77,9 @@ public class CtrlPoblacioTest {
     public void testTots() {
         System.out.println("tots");
         CtrlPoblacio instance = new CtrlPoblacio();
-        ArrayList<Poblacio> poblacions = new ArrayList<Poblacio>();
-        Poblacio p1 = new Poblacio("Gratallops");
-        Poblacio p2 = new Poblacio("Falset");
-        poblacions.add(p2);
-        poblacions.add(p1);
-        ArrayList<Poblacio> pobl = instance.tots();
-        assertEquals(poblacions, pobl);
+        ArrayList<Poblacio> poblacions = instance.tots();
+        ArrayList<String> noms = new ArrayList<String>();
+        for(Poblacio p : poblacions) noms.add(p.getNom());
+        assertTrue(noms.contains(nomPoblacio1));
     }
-    
-    
-    
-    
 }
