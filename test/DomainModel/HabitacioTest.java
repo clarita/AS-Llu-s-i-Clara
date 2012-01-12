@@ -35,9 +35,11 @@ public class HabitacioTest {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
-        
-        //Habitacio h = new Habitacio(new HabitacioId("palace", 1), 1, new Hotel("palace", null, null))  //new HabitacioId("palace", 1), 1, new Hotel("palace", "caaar"));
-        //session.persist(h);
+        CategoriaHotel categoria = new CategoriaHotel("Luxe");
+        Hotel h = new Hotel("palace", "pijo", "Barcelona", categoria);
+        HabitacioId id = new HabitacioId("palace", 1);
+        Habitacio hab = new Habitacio(id, 1, h);
+        session.persist(hab);
     }
 
     @AfterClass
@@ -60,7 +62,8 @@ public class HabitacioTest {
     
     @Test
     public void testHibernateFetch() {
-        Habitacio h = (Habitacio) session.get(Habitacio.class, new HabitacioId("palace", 1));
+        HabitacioId id = new HabitacioId("palace", 1);
+        Habitacio h = (Habitacio) session.get(Habitacio.class, id);
         String prova = h.getHotel().getNom();
         assertEquals(prova, "palace");
     }
