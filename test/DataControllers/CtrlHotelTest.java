@@ -41,7 +41,7 @@ public class CtrlHotelTest {
             session.saveOrUpdate(categoria);
             Poblacio poblacio = new Poblacio(nomPoblacio);
             session.saveOrUpdate(poblacio);
-            Hotel hotel = new Hotel(nomHotel,"Luxós hotel al centre de la ciutat.","Ciutat de prova",categoria);
+            Hotel hotel = new Hotel(nomHotel,"Luxós hotel al centre de la ciutat.",nomPoblacio,categoria);
             session.saveOrUpdate(hotel);
         } catch (RuntimeException e) {
             session.getTransaction().rollback();

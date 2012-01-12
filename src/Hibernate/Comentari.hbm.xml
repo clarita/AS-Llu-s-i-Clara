@@ -10,7 +10,7 @@
                 <column name="DNICLIENT" length="100" />
             </key-property>
             <key-property name="data" type="date">
-                <column name="DATA" length="10" />
+                <column name="DATAREALITZACIO" length="10" />
             </key-property>
         </composite-id>
         <property name="avaluacio" type="int">

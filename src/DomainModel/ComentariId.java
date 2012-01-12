@@ -28,8 +28,8 @@ public class ComentariId implements Serializable {
      * @param dni
      * @param d 
      */
-    public ComentariId(String nom, String dni, Date d){
-        this.data = d;
+    public ComentariId(String nom, String dni, Date date){
+        this.data = date;
         this.dniClient = dni;
         this.nomHotel = nom;
     

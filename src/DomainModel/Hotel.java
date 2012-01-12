@@ -20,7 +20,6 @@ public class Hotel {
     
     //atributs necessaris per Hibernate
     String nomPoblacio;
-    String nomCategoria;
     
     public Hotel(){};
 
@@ -38,7 +37,6 @@ public class Hotel {
         this.preus = new  HashSet();
         this.nomPoblacio = nomPoblacio;
         this.categoria = categoria;
-        this.nomCategoria = categoria.getNom();
     }
 
     
@@ -75,16 +73,6 @@ public class Hotel {
     public Set<PreuTipusHabitacio> getPreus() {
         return this.preus;
     }
-
-    public String getNomCategoria() {
-        return nomCategoria;
-    }
-
-    public void setNomCategoria(String nomCategoria) {
-        this.nomCategoria = nomCategoria;
-    }
-    
-    
     
     /**
      * 
@@ -137,6 +125,21 @@ public class Hotel {
      */
     public String getNomPoblacio() {
         return this.nomPoblacio;
+    }
+    
+    /**
+     * Setter de la categoria
+     */
+    public void setCategoria(CategoriaHotel categoria){
+        this.categoria = categoria;
+    }
+    
+    /**
+     * Getter de la categoria
+     * @return 
+     */
+    public CategoriaHotel getCategoria() {
+        return this.categoria;
     }
     
     

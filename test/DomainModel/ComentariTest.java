@@ -22,6 +22,7 @@ public class ComentariTest {
     
     static Session session = null;
     static String nomH = "Hotel prova";
+    static String nomPoblacio = "poblacio prova";
     static String dniC = "39476969S";
     static Date d = new Date();
   
@@ -35,22 +36,19 @@ public class ComentariTest {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            //CategoriaHotel c = new CategoriaHotel("tres estrelles");
-            //Hotel h = new Hotel("Hotel Prova",nomH,"ciutat de prova",c);
+            Poblacio poblacio = new Poblacio(nomPoblacio);
+            session.saveOrUpdate(poblacio);
+            Hotel hotel = new Hotel(nomH,"descripcio","ciutat de prova",null);
+            session.saveOrUpdate(hotel);
+            Client client = new Client(dniC,"nom prova","cognom","email");
+            session.saveOrUpdate(client);
             ComentariId id = new ComentariId(nomH, dniC,d);
-            //session.saveOrUpdate(id);
-            //session.persist(id);
-            Comentari com = new Comentari(7, "comentari de prova", d,id);
-            session.persist(com);
+            Comentari com = new Comentari(id, 7, "comentari de prova");
+            session.saveOrUpdate(com);
         } catch (RuntimeException e) {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
-
-        
-        
-        
-
     }
 
     @AfterClass
@@ -58,6 +56,10 @@ public class ComentariTest {
         if (session != null) {
             Comentari com =(Comentari) session.get(Comentari.class,new ComentariId(nomH,dniC,d));
             session.delete(com);
+            Hotel hotel = (Hotel) session.get(Hotel.class, nomH);
+            session.delete(hotel);
+            Poblacio poblacio = (Poblacio)session.get(Poblacio.class, nomPoblacio);
+            session.delete(poblacio);
             session.getTransaction().commit();
         }
        
