@@ -4,13 +4,19 @@
  */
 package DomainControllers;
 
+import Adapters.IPagamentAdapter;
 import DataInterfaces.ICtrlClient;
+import DataInterfaces.ICtrlHabitacio;
 import DataInterfaces.ICtrlHotel;
 import DataInterfaces.ICtrlPoblacio;
+import DomainFactories.AdapterFactory;
 import DomainFactories.CtrlDataFactory;
+import DomainModel.BonsHotels;
 import DomainModel.Client;
+import DomainModel.Habitacio;
 import DomainModel.Hotel;
 import DomainModel.Poblacio;
+import DomainModel.Reserva;
 import TupleTypes.DadesHotel;
 import TupleTypes.DadesReserva;
 import java.util.ArrayList;
@@ -96,8 +102,21 @@ public class CasUsReservarHabitacio {
         return result;
     }
     
-    public void pagament(String numTarg, Date dCad) {
-        //TODO cridar servei de pagament
-    }
     
+    public void pagament(String numTarg, Date dCad) throws Exception {
+        IPagamentAdapter pa = AdapterFactory.getInstance().getPagamentAdapter();
+        pa.pagament(numTarg, dCad, preuTotal);
+        
+        CtrlDataFactory cdf = CtrlDataFactory.getInstance();
+        ICtrlClient cc = cdf.getCtrlClient();
+        ICtrlHabitacio ch = cdf.getCtrlHabitacio();
+        
+        Client c = cc.get(dniClient);
+        Habitacio h = ch.get(numHabitacio, nomHotel);
+        
+        String rid = BonsHotels.getInstance().getReservationId();
+        
+        Reserva r = new Reserva(dataInici, dataFi, rid, preuTotal);
+        r.afegirAHabitacio(h); //TODO CANVI RESPECTE DIAGRAMES
+    }
 }
