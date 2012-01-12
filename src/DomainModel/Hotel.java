@@ -38,6 +38,7 @@ public class Hotel {
         this.preus = new  HashSet();
         this.nomPoblacio = nomPoblacio;
         this.categoria = categoria;
+        this.nomCategoria = categoria.getNom();
     }
 
     
