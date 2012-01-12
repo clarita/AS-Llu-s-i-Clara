@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="DomainModel.Habitacio" table="HABITACIO" schema="APP">
         <composite-id name="id" class="DomainModel.HabitacioId">
-            <key-property name="nomhotel" type="string">
+            <key-property name="nomHotel" type="string">
                 <column name="NOMHOTEL" length="100" />
             </key-property>
             <key-property name="numero" type="int">
