@@ -34,11 +34,6 @@ public class CategoriaHotelTest {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
-
-        
-        
-        
-
     }
 
     @AfterClass
@@ -52,6 +47,7 @@ public class CategoriaHotelTest {
     
     @Before
     public void setUp() {
+    
     }
     
     @After
@@ -64,9 +60,7 @@ public class CategoriaHotelTest {
         CategoriaHotel cat = (CategoriaHotel) session.get(CategoriaHotel.class, "tres estrelles");
         String prova  = cat.getNom();
         assertEquals(prova, "tres estrelles");
-    }
-
-  
+    }  
 }
 
 
