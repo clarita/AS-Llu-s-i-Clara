@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class HabitacioId implements Serializable {
     
-    String nomhotel;
+    String nomHotel;
     Integer numero;
     
     public HabitacioId() {
@@ -20,16 +20,16 @@ public class HabitacioId implements Serializable {
     }
     
     public HabitacioId(String nomhotel, Integer numero) {
-        this.nomhotel = nomhotel;
+        this.nomHotel = nomhotel;
         this.numero = numero;
     }
 
-    public String getNomhotel() {
-        return nomhotel;
+    public String getNomHotel() {
+        return nomHotel;
     }
 
-    public void setNomhotel(String nomhotel) {
-        this.nomhotel = nomhotel;
+    public void setNomHotel(String nomhotel) {
+        this.nomHotel = nomhotel;
     }
 
     public Integer getNumero() {
