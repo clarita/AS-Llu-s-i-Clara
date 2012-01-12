@@ -3,7 +3,7 @@
 <hibernate-mapping>
     <class name="DomainModel.Comentari" table="COMENTARI" schema="APP">
         <composite-id name="id" class="DomainModel.ComentariId">
-            <key-property name="nomhotel" type="string">
+            <key-property name="nomHotel" type="string">
                 <column name="NOMHOTEL" length="100" />
             </key-property>
             <key-property name="dniClient" type="string">

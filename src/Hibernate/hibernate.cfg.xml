@@ -20,5 +20,6 @@
     <mapping resource="Hibernate/CategoriaHotel.hbm.xml"/>
     <mapping resource="Hibernate/Poblacio.hbm.xml"/>
     <mapping resource="Hibernate/BonsHotels.hbm.xml"/>
+    <mapping resource="Hibernate/Comentari.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

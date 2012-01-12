@@ -30,15 +30,15 @@ public class Window4 extends javax.swing.JFrame {
         dataIniciValueLabel.setText(s.format(dades.dIni));
         dataFiValueLabel.setText(s.format(dades.dFi));
         numOcupValueLabel.setText(dades.numOc.toString());
+        
         hotelValueLabel.setText(dades.nomHotel);
         habitacioValueLabel.setText(dades.nomTipusHab);
         preuTotalValueLabel.setText(dades.preuTotal.toString());
+        
         dniValueLabel.setText(dades.dni);
         nomValueLabel.setText(dades.nomClient);
         cognomsValueLabel.setText(dades.cognomsClient);
-        emailValueLabel.setText(dades.emailClient);
-                
-        
+        emailValueLabel.setText(dades.emailClient);        
     }
 
     /** This method is called from within the constructor to

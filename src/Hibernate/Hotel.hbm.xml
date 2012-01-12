@@ -12,7 +12,7 @@
 
         <property name="nomPoblacio" type="string" column="NOMPOBLACIO" />
 
-        <many-to-one name="categoria" class="DomainModel.CategoriaHotel" 
+        <many-to-one name="nomCategoria" class="DomainModel.CategoriaHotel" 
         column="NOMCATEGORIA"/>
         
         <set name="preus" table="PREUTIPUSHABITACIO" >

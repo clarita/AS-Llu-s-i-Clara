@@ -20,6 +20,7 @@ public class Hotel {
     
     //atributs necessaris per Hibernate
     String nomPoblacio;
+    String nomCategoria;
     
     public Hotel(){};
 
@@ -73,6 +74,16 @@ public class Hotel {
     public Set<PreuTipusHabitacio> getPreus() {
         return this.preus;
     }
+
+    public String getNomCategoria() {
+        return nomCategoria;
+    }
+
+    public void setNomCategoria(String nomCategoria) {
+        this.nomCategoria = nomCategoria;
+    }
+    
+    
     
     /**
      * 
