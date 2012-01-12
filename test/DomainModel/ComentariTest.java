@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
+ * @author clara
  * @author elena_gratallops
  */
 public class ComentariTest {
@@ -24,6 +25,7 @@ public class ComentariTest {
     static String nomH = "Hotel prova";
     static String nomPoblacio = "poblacio prova";
     static String dniC = "39476969S";
+    static String descripcio = "comentari de prova";
     static Date d = new Date();
   
     
@@ -38,12 +40,12 @@ public class ComentariTest {
             session.beginTransaction();
             Poblacio poblacio = new Poblacio(nomPoblacio);
             session.saveOrUpdate(poblacio);
-            Hotel hotel = new Hotel(nomH,"descripcio","ciutat de prova",null);
+            Hotel hotel = new Hotel(nomH,"descripcio",nomPoblacio,null);
             session.saveOrUpdate(hotel);
             Client client = new Client(dniC,"nom prova","cognom","email");
             session.saveOrUpdate(client);
             ComentariId id = new ComentariId(nomH, dniC,d);
-            Comentari com = new Comentari(id, 7, "comentari de prova");
+            Comentari com = new Comentari(id, 7, descripcio);
             session.saveOrUpdate(com);
         } catch (RuntimeException e) {
             session.getTransaction().rollback();
@@ -76,9 +78,9 @@ public class ComentariTest {
 
     @Test
     public void testHibernateFetch() {
-        Comentari comentari = (Comentari) session.get(CategoriaHotel.class, new ComentariId(nomH,dniC,d));
+        Comentari comentari = (Comentari) session.get(Comentari.class, new ComentariId(nomH,dniC,d));
         String prova  = comentari.getDescripcio();
-        assertEquals(prova,"comentari de prova");
+        assertEquals(prova,descripcio);
     }
 
   
