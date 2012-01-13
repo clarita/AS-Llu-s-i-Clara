@@ -112,9 +112,13 @@ public class ReservarHabitacioView {
      */
     public void mostraPreu(DadesReserva dades) {
         window2.setVisible(false);
-        window3 = new Window3();
+        window3 = new Window3(this);
         window3.mostraDades(dades);
         window3.setVisible(true);
+    }
+    
+    public void confirmacioWindow3(String dni) {
+        controlador.PrOkIntroduirDni(dni);
     }
     
     /**
@@ -160,16 +164,4 @@ public class ReservarHabitacioView {
         System.exit(0);
     }
 
-    /**
-     * crida a la funcio del controlador per a canviar de pantalla de la 3 a la 4 i li passa el dni que han introduït
-     * com a nova informació 
-     * @param Tdni
-     * @author elena & clara
-     */
-    void confirmacioWindow3(String dni) {
-        //throw new UnsupportedOperationException("Not yet implemented");
-        controlador.PrOkIntroduirDni(dni);
-    }
-    
-    
 }

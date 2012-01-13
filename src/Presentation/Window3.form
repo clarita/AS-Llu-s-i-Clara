@@ -23,36 +23,41 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Terror" alignment="0" pref="515" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="numOcLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="hotelLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="poblacio" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dIniLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dFILabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="habitacioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="preuTotalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dniLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Tpoblacio" min="-2" max="-2" attributes="0"/>
-                          <Component id="TdIni" min="-2" max="-2" attributes="0"/>
-                          <Component id="TdFi" min="-2" max="-2" attributes="0"/>
-                          <Component id="TnOcup" min="-2" max="-2" attributes="0"/>
-                          <Component id="Thotel" min="-2" max="-2" attributes="0"/>
-                          <Component id="Thabitacio" min="-2" max="-2" attributes="0"/>
-                          <Component id="Tpreu" min="-2" max="-2" attributes="0"/>
-                          <Component id="dniValueTextField" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
+                          <Component id="Terror" alignment="0" pref="515" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="numOcLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="hotelLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="poblacio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dIniLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dFILabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="habitacioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="preuTotalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dniLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Tpoblacio" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TdIni" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TdFi" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TnOcup" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Thotel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Thabitacio" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Tpreu" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dniValueTextField" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="dacord" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="322" max="32767" attributes="0"/>
-                      <Component id="cancela" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                      <Component id="dacord" min="-2" pref="120" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="cancela" min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>

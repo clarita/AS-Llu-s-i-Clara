@@ -26,7 +26,7 @@ public class Window2 extends javax.swing.JFrame {
         this.viewController = controller;
         initComponents();
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -191,7 +191,7 @@ public class Window2 extends javax.swing.JFrame {
         dIniValueLabel.setText(basicData.dIni.toString());
         dFiValueLabel.setText(basicData.dIni.toString());
         numOcValueLabel.setText(basicData.numOc.toString());
-        
+        System.out.println("printing " + data.size() + " hotels");
         for(DadesHotel hotel : data) {
             HotelView vistaHotel = new HotelView();
             vistaHotel.loadData(hotel);
