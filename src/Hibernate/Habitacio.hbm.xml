@@ -12,16 +12,15 @@
                 <column name="NUMERO" />
             </key-property>
         </composite-id>
-        <property name="hotel" class="DomainModel.Hotel">
-            <column name="NOMHOTEL" update="false" insert="false" />
-        </property>
+        <many-to-one name="hotel" class="DomainModel.Hotel" column="NOMHOTEL" update="false" insert="false" />
+
         <property name="nomTipus" type="string">
             <column name="NOMTIPUS" />
         </property>
         <set name="reserves">
             <key>
                 <column name="NOMHOTEL" />
-                <column name="NUMERO"/>
+                <column name="NUMEROHABITACIO"/>
             </key>
             <one-to-many class="DomainModel.Reserva" />
         </set>

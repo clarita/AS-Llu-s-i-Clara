@@ -15,7 +15,7 @@ import java.util.Set;
 public class Habitacio {
     Integer numero;
     Hotel hotel;
-    Set<Reserva> reserves;
+    Set<Reserva> reserves = new HashSet<Reserva>();
     
     /* Atributs requerits pel Hibernate */
     HabitacioId id;
@@ -29,7 +29,6 @@ public class Habitacio {
         this.id = id;
         this.numero = numero;
         this.hotel = hotel;
-        this.reserves = new HashSet<Reserva>();
         this.nomTipus = nomTipus;
     }
         

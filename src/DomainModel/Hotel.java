@@ -233,13 +233,14 @@ public class Hotel {
     
     private float mitjaAval(){
         Integer suma = 0;
-        int i = 0;
-        for(Comentari c : comentaris){
-            suma = suma + c.getAvaluacio();
-            ++i;
-        }
+        if(!comentaris.isEmpty()){
+            for(Comentari c : comentaris){
+                suma = suma + c.getAvaluacio();
+            }
         
-        return suma/i;
+            return suma/comentaris.size();
+        }
+        return 0;
     }
     
 }
