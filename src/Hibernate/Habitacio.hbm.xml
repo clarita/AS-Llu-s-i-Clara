@@ -12,5 +12,12 @@
                 <column name="NUMERO" />
             </key-property>
         </composite-id>
+        <set name="reserves">
+            <key>
+                <column name="NOMHOTEL" />
+                <column name="NUMERO"/>
+            </key>
+            <one-to-many class="DomainModel.Reserva" />
+        </set>
     </class>
 </hibernate-mapping>
