@@ -22,7 +22,15 @@ import static org.junit.Assert.*;
 public class HabitacioTest {
     
     static Session session = null;
-
+    
+    static Habitacio habProves = null;
+    
+    static String nomHotel = "provaNomHotel";
+    static String desc = "provaDesc";
+    static String poblacio = "provaPoblacio";
+    static String nomCategoria = "provaNomCategoria";
+    static Integer numeroHabitacio = 28;
+    
     public HabitacioTest() {
     }
 
@@ -35,18 +43,28 @@ public class HabitacioTest {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
-        CategoriaHotel categoria = new CategoriaHotel("Luxe");
-        Hotel h = new Hotel("palace", "pijo", "Barcelona", categoria);
-        HabitacioId id = new HabitacioId("palace", 1);
-        Habitacio hab = new Habitacio(id, 1, h);
+         
+        Poblacio p = new Poblacio(poblacio);
+        session.persist(p);
+        
+        CategoriaHotel categoria = new CategoriaHotel(nomCategoria);
+        Hotel h = new Hotel(nomHotel, desc, poblacio, categoria);
+        session.persist(h);
+        HabitacioId id = new HabitacioId(nomHotel, numeroHabitacio);
+        Habitacio hab = new Habitacio(id, numeroHabitacio, h);
         session.persist(hab);
+        
+        habProves = new Habitacio(id, numeroHabitacio, h);
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
         if (session != null) {
-            Habitacio h = (Habitacio) session.get(Habitacio.class, new HabitacioId("palace", 1));
+            Habitacio h = (Habitacio) session.get(Habitacio.class, new HabitacioId(nomHotel, numeroHabitacio));
             session.delete(h);
+            
+            Hotel ho = (Hotel) session.get(Hotel.class, nomHotel);
+            session.delete(ho);
             session.getTransaction().commit();
         }
 
@@ -62,15 +80,17 @@ public class HabitacioTest {
     
     @Test
     public void testHibernateFetch() {
-        HabitacioId id = new HabitacioId("palace", 1);
+        HabitacioId id = new HabitacioId(nomHotel, numeroHabitacio);
         Habitacio h = (Habitacio) session.get(Habitacio.class, id);
         String prova = h.getHotel().getNom();
-        assertEquals(prova, "palace");
+        assertEquals(prova, nomHotel);
     }
+    
 
     /**
      * Test of estaDisp method, of class Habitacio.
      */
+    /*
     @Test
     public void testEstaDisp() {
         System.out.println("estaDisp");
@@ -83,10 +103,13 @@ public class HabitacioTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+     * 
+     */
 
     /**
      * Test of afReserva method, of class Habitacio.
      */
+    /*
     @Test
     public void testAfReserva() {
         System.out.println("afReserva");
@@ -96,127 +119,16 @@ public class HabitacioTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+*/
     /**
      * Test of esDelHotel method, of class Habitacio.
      */
     @Test
     public void testEsDelHotel() {
         System.out.println("esDelHotel");
-        String nomHotel = "";
-        Habitacio instance = new Habitacio();
-        boolean expResult = false;
-        boolean result = instance.esDelHotel(nomHotel);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getHotel method, of class Habitacio.
-     */
-    @Test
-    public void testGetHotel() {
-        System.out.println("getHotel");
-        Habitacio instance = new Habitacio();
-        Hotel expResult = null;
-        Hotel result = instance.getHotel();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setHotel method, of class Habitacio.
-     */
-    @Test
-    public void testSetHotel() {
-        System.out.println("setHotel");
-        Hotel hotel = null;
-        Habitacio instance = new Habitacio();
-        instance.setHotel(hotel);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getNumero method, of class Habitacio.
-     */
-    @Test
-    public void testGetNumero() {
-        System.out.println("getNumero");
-        Habitacio instance = new Habitacio();
-        Integer expResult = null;
-        Integer result = instance.getNumero();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setNumero method, of class Habitacio.
-     */
-    @Test
-    public void testSetNumero() {
-        System.out.println("setNumero");
-        Integer numero = null;
-        Habitacio instance = new Habitacio();
-        instance.setNumero(numero);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getReserves method, of class Habitacio.
-     */
-    @Test
-    public void testGetReserves() {
-        System.out.println("getReserves");
-        Habitacio instance = new Habitacio();
-        Set expResult = null;
-        Set result = instance.getReserves();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setReserves method, of class Habitacio.
-     */
-    @Test
-    public void testSetReserves() {
-        System.out.println("setReserves");
-        Set<Reserva> reserves = null;
-        Habitacio instance = new Habitacio();
-        instance.setReserves(reserves);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getId method, of class Habitacio.
-     */
-    @Test
-    public void testGetId() {
-        System.out.println("getId");
-        Habitacio instance = new Habitacio();
-        HabitacioId expResult = null;
-        HabitacioId result = instance.getId();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setId method, of class Habitacio.
-     */
-    @Test
-    public void testSetId() {
-        System.out.println("setId");
-        HabitacioId id = null;
-        Habitacio instance = new Habitacio();
-        instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean result = habProves.esDelHotel(nomHotel);
+        assertTrue(result);
+        result = habProves.esDelHotel("Ritz");
+        assertFalse(result);
     }
 }
