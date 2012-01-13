@@ -14,5 +14,9 @@
         <property name="descripcio" type="string">
             <column name="DESCRIPCIO" length="300" />
         </property>
+        <set name="habitacions">
+            <key column="NOMTIPUS" />
+            <one-to-many class="DomainModel.Habitacio" />
+        </set>
     </class>
 </hibernate-mapping>
