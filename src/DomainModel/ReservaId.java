@@ -4,13 +4,14 @@
  */
 package DomainModel;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author lluisgh28
  */
-public class ReservaId {
+public class ReservaId implements Serializable {
     HabitacioId habitacioId;
     Date dataInici;
 
@@ -30,4 +31,19 @@ public class ReservaId {
         this.habitacioId = habitacioId;
     }
     
+    public String getNomHotel() {
+        return this.habitacioId.getNomHotel();
+    }
+    
+    public void setNomHotel(String nomHotel) {
+        this.habitacioId.setNomHotel(nomHotel);
+    }
+    
+    public Integer getNumeroHabitacio() {
+        return this.habitacioId.getNumero();
+    }
+    
+    public void setNumeroHabitacio(Integer numeroHabitacio) {
+        this.habitacioId.setNumero(numeroHabitacio);
+    }
 }
