@@ -12,7 +12,6 @@ package Presentation;
 
 import TupleTypes.DadesHotel;
 import TupleTypes.DadesReserva;
-import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -21,8 +20,10 @@ import java.util.Set;
  */
 public class Window2 extends javax.swing.JFrame {
 
+    private ReservarHabitacioView viewController;
     /** Creates new form Window2 */
-    public Window2() {
+    public Window2(ReservarHabitacioView controller) {
+        this.viewController = controller;
         initComponents();
     }
 
@@ -44,8 +45,8 @@ public class Window2 extends javax.swing.JFrame {
         dFiValueLabel = new javax.swing.JLabel();
         numOcValueLabel = new javax.swing.JLabel();
         hotelsScrollPanel = new javax.swing.JScrollPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,14 +66,19 @@ public class Window2 extends javax.swing.JFrame {
 
         numOcValueLabel.setText("jLabel8");
 
-        jButton1.setText("D'acord");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        okButton.setText("D'acord");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                okButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancel·la");
+        cancelButton.setText("Cancel·la");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,10 +108,10 @@ public class Window2 extends javax.swing.JFrame {
                 .addContainerGap())
             .add(layout.createSequentialGroup()
                 .add(78, 78, 78)
-                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 94, Short.MAX_VALUE)
-                .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(105, 105, 105))
+                .add(okButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 130, Short.MAX_VALUE)
+                .add(cancelButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(69, 69, 69))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -130,17 +136,24 @@ public class Window2 extends javax.swing.JFrame {
                 .add(hotelsScrollPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 198, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton2))
+                    .add(okButton)
+                    .add(cancelButton))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        //TODO: agafar els correctes
+        String nomHotel = "";
+        String nomTipus = "";
+        viewController.confirmacioWindow2(nomHotel, nomTipus);
+    }//GEN-LAST:event_okButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        viewController.tanca();
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,13 +182,8 @@ public class Window2 extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
 
-            public void run() {
-                new Window2().setVisible(true);
-            }
-        });
+      
     }
     
     public void loadData(DadesReserva basicData, Set<DadesHotel> data) {
@@ -193,15 +201,15 @@ public class Window2 extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
     private javax.swing.JLabel dFiLabel;
     private javax.swing.JLabel dFiValueLabel;
     private javax.swing.JLabel dIniLabel;
     private javax.swing.JLabel dIniValueLabel;
     private javax.swing.JScrollPane hotelsScrollPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel numOcLabel;
     private javax.swing.JLabel numOcValueLabel;
+    private javax.swing.JButton okButton;
     private javax.swing.JLabel poblacioLabel;
     private javax.swing.JLabel poblacioValueLabel;
     // End of variables declaration//GEN-END:variables

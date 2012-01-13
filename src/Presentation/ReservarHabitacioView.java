@@ -96,9 +96,13 @@ public class ReservarHabitacioView {
      */
     public void mostraHabitacions(DadesReserva basicData, Set<DadesHotel> dades) {
         window1.setVisible(false);
-        window2 = new Window2();
+        window2 = new Window2(this);
         window2.loadData(basicData, dades);
         window2.setVisible(true);
+    }
+    
+    public void confirmacioWindow2(String nomHotel, String nomTipus) {
+        controlador.PrOkSeleccionarHabitacio(nomHotel, nomTipus);
     }
     
     /**
