@@ -40,6 +40,15 @@ public class TipusHabitacio {
         }
         return num;
     }
+    
+    public Integer obteNumeroHabLliure(String nomHotel, Date dIni, Date dFi) {
+        for (Habitacio h : habitacions) {
+            if (h.esDelHotel(nomHotel) && h.estaDisp(dIni, dFi)) 
+                return h.getNumero();
+        }
+        
+        return null;
+    }
 
     public Integer getCapacitat() {
         return capacitat;
