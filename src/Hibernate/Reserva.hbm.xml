@@ -4,11 +4,23 @@
 <!-- Generated 05/01/2012 13:08:59 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="DomainModel.Reserva" table="RESERVA" schema="APP">
-        <composite-id name="id" class="DomainModel.ReservaId">
+        <id name="idReserva" type="integer">
+            <generator class="increment" />
+        </id>
+        <!--composite-id name="id" class="DomainModel.ReservaId">
             <key-property name="nomHotel" type="string"/>
             <key-property name="numeroHabitacio" type="int"/>
             <key-property name="dataInici" type="date"/>
-        </composite-id>
+        </composite-id-->
+        <property name="nomHotel" type="string">
+            <column name="NOMHOTEL" />
+        </property>
+        <property name="numeroHabitacio" type="integer">
+            <column name="NUMEROHABITACIO" />
+        </property>
+        <property name="dataInici" type="date">
+            <column name="DATAINICI" length="10" />
+        </property>
         <property name="dniClient" type="string">
             <column name="DNICLIENT" length="100" />
         </property>
@@ -18,9 +30,9 @@
         <property name="dataFi" type="date">
             <column name="DATAFI" length="10" />
         </property>
-        <property name="idReserva" type="string">
+        <!--property name="idReserva" type="string">
             <column name="IDRESERVA" length="100" unique="true"/>
-        </property>
+        </property-->
         <property name="preuTotal" type="java.lang.Double">
             <column name="PREUTOTAL" precision="52" scale="0" />
         </property>

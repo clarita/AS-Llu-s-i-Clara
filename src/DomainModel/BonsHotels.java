@@ -85,13 +85,14 @@ public class BonsHotels {
         return this.quotaVariable;
     }
     
+    //NOTA: aquesta operació ja no és necessària, ja que la capa de dades s'ocupa de la generació del idReserva
     /**
      * Recupera l'identificador de la reserva actual
      * @return 
      */
-    public String getReservationId() {
+    /*public String getReservationId() {
         Random generator = new Random( 19580427 );
         Integer randomNumber = generator.nextInt();
         return randomNumber.toString();
-    }
+    }*/
 }

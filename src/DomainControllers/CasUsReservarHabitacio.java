@@ -17,11 +17,13 @@ import DomainModel.Habitacio;
 import DomainModel.Hotel;
 import DomainModel.Poblacio;
 import DomainModel.Reserva;
+import Hibernate.HibernateUtil;
 import TupleTypes.DadesHotel;
 import TupleTypes.DadesReserva;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
+import org.hibernate.Session;
 
 /**
  *
@@ -108,15 +110,17 @@ public class CasUsReservarHabitacio {
         pa.pagament(numTarg, dCad, preuTotal);
         
         CtrlDataFactory cdf = CtrlDataFactory.getInstance();
-        ICtrlClient cc = cdf.getCtrlClient();
         ICtrlHabitacio ch = cdf.getCtrlHabitacio();
         
-        Client c = cc.get(dniClient);
         Habitacio h = ch.get(numHabitacio, nomHotel);
         
-        String rid = BonsHotels.getInstance().getReservationId();
+        Reserva r = new Reserva(dataInici, dataFi, preuTotal, dniClient, nomHotel, numHabitacio);
         
-        Reserva r = new Reserva(dataInici, dataFi, rid, preuTotal);
-        r.afegirAHabitacio(h); //TODO CANVI RESPECTE DIAGRAMES
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.saveOrUpdate(r);
+        
+        //tot i que en els diagrames ho feiem des de reserva, aquesta opció no genera acoblament
+        //entre Reserva i Habitació (la navegabilitat que tenim és la inversa)
+        h.afReserva(r);
     }
 }

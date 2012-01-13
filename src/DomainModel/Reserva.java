@@ -11,28 +11,32 @@ import java.util.Date;
  * @author lluisgh28
  */
 public class Reserva {
+    
+    //Originalment teníem un String, però per poder generar-lo automàticament hem preferit un integer.
+    Integer idReserva;
+    
     Date dataInici;
     Date dataReserva;
     Date dataFi;
-    String idReserva;
+    
     Float preuTotal;
     
     /* Atributs requerits pel Hibernate */
     String dniClient;
-    ReservaId id;
+    String nomHotel;
+    Integer numeroHabitacio;
+
     
     public Reserva() {}
     
-    public Reserva(Date dIni, Date dFi, String idR, Float preuTotal) {
+    public Reserva(Date dIni, Date dFi, Float preuTotal, String dniClient, String nomHotel, Integer numeroHabitacio) {
         this.dataInici = dIni;
         this.dataFi = dFi;
         this.dataReserva = new Date();
-        this.idReserva = idR;
         this.preuTotal = preuTotal;
-    }
-    
-    public void afegirAHabitacio(Habitacio hab) {
-        hab.afReserva(this);
+        this.nomHotel = nomHotel;
+        this.numeroHabitacio = numeroHabitacio;
+        this.dniClient = dniClient;
     }
     
     public boolean esSolapa(Date dIni, Date dFi) {        
@@ -63,11 +67,11 @@ public class Reserva {
         this.dataReserva = dataReserva;
     }
 
-    public String getIdReserva() {
+    public Integer getIdReserva() {
         return idReserva;
     }
 
-    public void setIdReserva(String idReserva) {
+    public void setIdReserva(Integer idReserva) {
         this.idReserva = idReserva;
     }
 
@@ -79,13 +83,6 @@ public class Reserva {
         this.preuTotal = preuTotal;
     }
 
-    public ReservaId getId() {
-        return id;
-    }
-
-    public void setId(ReservaId id) {
-        this.id = id;
-    }
 
     public String getDniClient() {
         return dniClient;
@@ -94,4 +91,21 @@ public class Reserva {
     public void setDniClient(String dniClient) {
         this.dniClient = dniClient;
     }
+    
+    public String getNomHotel() {
+        return nomHotel;
+    }
+
+    public void setNomHotel(String nomHotel) {
+        this.nomHotel = nomHotel;
+    }
+
+    public Integer getNumeroHabitacio() {
+        return numeroHabitacio;
+    }
+
+    public void setNumeroHabitacio(Integer numeroHabitacio) {
+        this.numeroHabitacio = numeroHabitacio;
+    }
+    
 }

@@ -134,33 +134,7 @@ public class ReservaTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getIdReserva method, of class Reserva.
-     */
-    @Test
-    public void testGetIdReserva() {
-        System.out.println("getIdReserva");
-        Reserva instance = new Reserva();
-        String expResult = "";
-        String result = instance.getIdReserva();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setIdReserva method, of class Reserva.
-     */
-    @Test
-    public void testSetIdReserva() {
-        System.out.println("setIdReserva");
-        String idReserva = "";
-        Reserva instance = new Reserva();
-        instance.setIdReserva(idReserva);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    
     /**
      * Test of getPreuTotal method, of class Reserva.
      */
