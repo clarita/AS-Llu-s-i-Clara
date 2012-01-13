@@ -7,7 +7,6 @@ package DomainModel;
 import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 import java.util.Date;
-import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -31,6 +30,16 @@ public class HabitacioTest {
     static String nomCategoria = "provaNomCategoria";
     static Integer numeroHabitacio = 28;
     
+    static Date dIni = new Date();
+    static Date dFi = new Date();
+    
+    static Float preuReserva = 1500F;
+    static String dniClient = "dniProva";
+    
+    static String nomTipusHab = "tipusProva";
+    static Integer capacitat = 4;
+    static String descTipus = "provaDesc";
+    
     public HabitacioTest() {
     }
 
@@ -48,13 +57,19 @@ public class HabitacioTest {
         session.persist(p);
         
         CategoriaHotel categoria = new CategoriaHotel(nomCategoria);
+        
         Hotel h = new Hotel(nomHotel, desc, poblacio, categoria);
         session.persist(h);
+        
         HabitacioId id = new HabitacioId(nomHotel, numeroHabitacio);
-        Habitacio hab = new Habitacio(id, numeroHabitacio, h);
+        
+        TipusHabitacio t = new TipusHabitacio(nomTipusHab, capacitat, descTipus);
+        session.persist(t);
+        
+        Habitacio hab = new Habitacio(id, numeroHabitacio, h, nomTipusHab);
         session.persist(hab);
         
-        habProves = new Habitacio(id, numeroHabitacio, h);
+        habProves = new Habitacio(id, numeroHabitacio, h, nomTipusHab);
     }
 
     @AfterClass
@@ -65,6 +80,10 @@ public class HabitacioTest {
             
             Hotel ho = (Hotel) session.get(Hotel.class, nomHotel);
             session.delete(ho);
+            
+            Poblacio p = (Poblacio) session.get(Poblacio.class, poblacio);
+            session.delete(p);
+            
             session.getTransaction().commit();
         }
 
@@ -90,36 +109,34 @@ public class HabitacioTest {
     /**
      * Test of estaDisp method, of class Habitacio.
      */
-    /*
+    
     @Test
     public void testEstaDisp() {
-        System.out.println("estaDisp");
-        Date dataInici = null;
-        Date dataFi = null;
-        Habitacio instance = new Habitacio();
-        boolean expResult = false;
-        boolean result = instance.estaDisp(dataInici, dataFi);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //TODO: fer-ho amb dates dels casos límit (anys diferents i tal) i donant els valors d'any, dia, etc.
+        Reserva r = new Reserva(dIni, dFi, preuReserva, dniClient, nomHotel, numeroHabitacio);
+        habProves.afReserva(r);
+        
+        Boolean result = habProves.estaDisp(dIni, dFi);
+        assertFalse(result);
+        
+        result = habProves.estaDisp(new Date(), new Date());
+        assertTrue(result);
     }
-     * 
-     */
-
+    
     /**
      * Test of afReserva method, of class Habitacio.
      */
-    /*
+    
     @Test
     public void testAfReserva() {
         System.out.println("afReserva");
-        Reserva r = null;
-        Habitacio instance = new Habitacio();
-        instance.afReserva(r);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Reserva r = new Reserva(new Date(), new Date(), preuReserva, dniClient, nomHotel, numeroHabitacio);
+        Integer initialSize = habProves.getReserves().size();
+        habProves.afReserva(r);
+        Integer finalSize = habProves.getReserves().size();
+        assertTrue(initialSize + 1 == finalSize);
     }
-*/
+
     /**
      * Test of esDelHotel method, of class Habitacio.
      */
