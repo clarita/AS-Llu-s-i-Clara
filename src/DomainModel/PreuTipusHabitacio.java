@@ -127,7 +127,7 @@ public class PreuTipusHabitacio {
     }
     
     public Integer obteNumeroHabLliure(String nomHotel, Date dIni, Date dFi) {
-        return 0;
+        return this.tipus.obteNumeroHabLliure(nomHotel, dIni, dFi);
     }
 
 }
