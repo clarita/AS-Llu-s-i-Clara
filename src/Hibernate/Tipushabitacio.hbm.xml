@@ -14,7 +14,7 @@
         <property name="descripcio" type="string">
             <column name="DESCRIPCIO" length="300" />
         </property>
-        <set name="habitacions">
+        <set name="habitacions" inverse="true">
             <key column="NOMTIPUS" />
             <one-to-many class="DomainModel.Habitacio" />
         </set>

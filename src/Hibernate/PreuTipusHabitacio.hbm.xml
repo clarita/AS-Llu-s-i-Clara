@@ -10,6 +10,6 @@
             <column name="PREU" precision="52" scale="0" />
         </property>
         <one-to-one name="strategy" class="DomainModel.IPreuStrategy" />
-        <many-to-one name="tipus" class="DomainModel.TipusHabitacio" column="NOMTIPUS" />
+        <many-to-one name="tipus" class="DomainModel.TipusHabitacio" column="NOMTIPUS" update="false" insert="false"/>
   </class>
 </hibernate-mapping>

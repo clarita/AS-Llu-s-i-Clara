@@ -11,7 +11,6 @@ import DataInterfaces.ICtrlHotel;
 import DataInterfaces.ICtrlPoblacio;
 import DomainFactories.AdapterFactory;
 import DomainFactories.CtrlDataFactory;
-import DomainModel.BonsHotels;
 import DomainModel.Client;
 import DomainModel.Habitacio;
 import DomainModel.Hotel;

@@ -12,6 +12,12 @@
                 <column name="NUMERO" />
             </key-property>
         </composite-id>
+        <property name="hotel" class="DomainModel.Hotel">
+            <column name="NOMHOTEL" update="false" insert="false" />
+        </property>
+        <property name="nomTipus" type="string">
+            <column name="NOMTIPUS" />
+        </property>
         <set name="reserves">
             <key>
                 <column name="NOMHOTEL" />

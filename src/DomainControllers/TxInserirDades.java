@@ -141,6 +141,7 @@ public class TxInserirDades {
             for(int j = 0; j < nomsTipus.length; ++j){
                 Habitacio h = new Habitacio();
                 h.setId(new HabitacioId(nomsHotels[i],j));
+                h.setNomTipus(nomsTipus[j]);
                 session.persist(h);
             }
         }
@@ -152,13 +153,12 @@ public class TxInserirDades {
     }
     
     private void carregaReserves() {
-        /*Reserva r = new Reserva();
-        r.setId(new ReservaId(new HabitacioId("Palace",1),new Date()));
-        session.saveOrUpdate(r);
-        r.setDataFi(new Date());*/
+        
     }
     
     private void carregaComentaris() {
-        
+        Comentari c = new Comentari();
+        c.setId(new ComentariId("Palace","3",new Date()));
+        session.saveOrUpdate(c);
     }
 }

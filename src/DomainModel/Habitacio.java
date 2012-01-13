@@ -19,16 +19,18 @@ public class Habitacio {
     
     /* Atributs requerits pel Hibernate */
     HabitacioId id;
+    String nomTipus;
     
     public Habitacio() {
         
     }
     
-    public Habitacio(HabitacioId id, Integer numero, Hotel hotel) {
+    public Habitacio(HabitacioId id, Integer numero, Hotel hotel, String nomTipus) {
         this.id = id;
         this.numero = numero;
         this.hotel = hotel;
         this.reserves = new HashSet<Reserva>();
+        this.nomTipus = nomTipus;
     }
         
     public boolean estaDisp(Date dataInici, Date dataFi) {
@@ -76,5 +78,13 @@ public class Habitacio {
 
     public void setId(HabitacioId id) {
         this.id = id;
+    }
+    
+    public String getNomTipus() {
+        return nomTipus;
+    }
+
+    public void setNomTipus(String nomTipus) {
+        this.nomTipus = nomTipus;
     }
 }
