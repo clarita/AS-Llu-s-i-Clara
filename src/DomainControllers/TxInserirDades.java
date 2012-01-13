@@ -6,6 +6,7 @@ package DomainControllers;
 
 import DomainModel.*;
 import Hibernate.HibernateUtil;
+import java.util.Date;
 import org.hibernate.Session;
 
 /**
@@ -151,9 +152,9 @@ public class TxInserirDades {
     }
     
     private void carregaReserves() {
-        /*Reserva r = new Reserva();
+        Reserva r = new Reserva();
         r.setId(new ReservaId("Palace",1,new Date()));
-        session.saveOrUpdate(r);*/
+        session.saveOrUpdate(r);
     }
     
     private void carregaComentaris() {
