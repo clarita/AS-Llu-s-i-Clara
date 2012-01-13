@@ -152,16 +152,10 @@ public class TxInserirDades {
     }
     
     private void carregaReserves() {
-<<<<<<< HEAD
         /*Reserva r = new Reserva();
         r.setId(new ReservaId(new HabitacioId("Palace",1),new Date()));
         session.saveOrUpdate(r);
         r.setDataFi(new Date());*/
-=======
-     //   Reserva r = new Reserva();
-     //   r.setId(new ReservaId("Palace",1,new Date()));
-     //   session.saveOrUpdate(r);
->>>>>>> TxInserirDades: carregaReserves comentat
     }
     
     private void carregaComentaris() {
