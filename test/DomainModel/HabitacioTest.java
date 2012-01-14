@@ -93,6 +93,9 @@ public class HabitacioTest {
             Poblacio p = (Poblacio) session.get(Poblacio.class, poblacio);
             session.delete(p);
             
+            TipusHabitacio t = (TipusHabitacio) session.get(TipusHabitacio.class, nomTipusHab);
+            session.delete(t);
+            
             session.getTransaction().commit();
         }
 
