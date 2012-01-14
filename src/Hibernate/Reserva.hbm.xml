@@ -27,7 +27,7 @@
         <property name="dataFi" type="date">
             <column name="DATAFI" length="10" />
         </property>
-        <property name="preuTotal" type="java.lang.Double">
+        <property name="preuTotal" type="java.lang.Float">
             <column name="PREUTOTAL" precision="52" scale="0" />
         </property>
     </class>
