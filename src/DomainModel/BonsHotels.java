@@ -5,7 +5,6 @@
 package DomainModel;
 
 import DomainFactories.CtrlDataFactory;
-import java.util.Random;
 
 /**
  *
@@ -24,6 +23,18 @@ public class BonsHotels {
      */
     public BonsHotels() {
         
+    }
+    
+    /**
+     * Creadora amb paràmetres per facilitar els tests
+     * @param id
+     * @param quotaFixa
+     * @param quotaVariable 
+     */
+    public BonsHotels(int id, float quotaFixa, float quotaVariable) {
+        this.id = id;
+        this.quotaFixa = quotaFixa;
+        this.quotaVariable = quotaVariable;
     }
     
     /**
