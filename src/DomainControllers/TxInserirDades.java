@@ -148,7 +148,7 @@ public class TxInserirDades {
     }
     
     private void carregaClients() {
-        Client c = new Client("3","Nom","Cognom","Email");
+        Client c = new Client("3","Pepe","Sánchez","pepito@gmail.com");
         session.saveOrUpdate(c);
     }
     

@@ -23,7 +23,7 @@ public class Window3 extends javax.swing.JFrame {
     
     
     public void mostraError(String m){
-        Terror.setText(m);
+        messageAreaLabel.setText(m);
     }
     
     /*public void mostraPreu(float preu){
@@ -32,13 +32,13 @@ public class Window3 extends javax.swing.JFrame {
     
     public void mostraDades(DadesReserva r){
         SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
-        Tpoblacio.setText(r.pob);
-        TdIni.setText(s.format(r.dIni));
-        TdFi.setText(s.format(r.dFi));
-        TnOcup.setText(r.numOc.toString());
-        Thotel.setText(r.nomHotel);
-        Thabitacio.setText(r.nomTipusHab);
-        
+        poblacioValueLabel.setText(r.pob);
+        dIniValueLabel.setText(s.format(r.dIni));
+        dFiValueLabel.setText(s.format(r.dFi));
+        numOcValueLabel.setText(r.numOc.toString());
+        hotelValueLabel.setText(r.nomHotel);
+        habitacioValueLabel.setText(r.nomTipusHab);
+        preuValueLabel.setText(r.preuTotal.toString());
     }
     
 
@@ -62,14 +62,14 @@ public class Window3 extends javax.swing.JFrame {
         dniValueTextField = new javax.swing.JTextField();
         dacord = new javax.swing.JButton();
         cancela = new javax.swing.JButton();
-        Tpoblacio = new javax.swing.JTextField();
-        TdIni = new javax.swing.JTextField();
-        TdFi = new javax.swing.JTextField();
-        TnOcup = new javax.swing.JTextField();
-        Thotel = new javax.swing.JTextField();
-        Thabitacio = new javax.swing.JTextField();
-        Tpreu = new javax.swing.JTextField();
-        Terror = new javax.swing.JTextField();
+        messageAreaLabel = new javax.swing.JLabel();
+        poblacioValueLabel = new javax.swing.JLabel();
+        dIniValueLabel = new javax.swing.JLabel();
+        dFiValueLabel = new javax.swing.JLabel();
+        numOcValueLabel = new javax.swing.JLabel();
+        hotelValueLabel = new javax.swing.JLabel();
+        habitacioValueLabel = new javax.swing.JLabel();
+        preuValueLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,8 +89,6 @@ public class Window3 extends javax.swing.JFrame {
 
         dniLabel.setText("DNI");
 
-        dniValueTextField.setText("jTextField8");
-
         dacord.setText("D'acord");
         dacord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,63 +103,58 @@ public class Window3 extends javax.swing.JFrame {
             }
         });
 
-        Tpoblacio.setText("jTextField1");
+        messageAreaLabel.setText(" ");
 
-        TdIni.setText("jTextField2");
-        TdIni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TdIniActionPerformed(evt);
-            }
-        });
+        poblacioValueLabel.setText("poblacioValueLabel");
 
-        TdFi.setText("jTextField3");
+        dIniValueLabel.setText("dIniValueLabel");
 
-        TnOcup.setText("jTextField4");
+        dFiValueLabel.setText("dFiValueLabel");
 
-        Thotel.setText("jTextField5");
+        numOcValueLabel.setText("numOcValueLabel");
 
-        Thabitacio.setText("jTextField6");
+        hotelValueLabel.setText("hotelValueLabel");
 
-        Tpreu.setText("jTextField7");
+        habitacioValueLabel.setText("habitacioValueLabel");
 
-        Terror.setText("jTextField8");
+        preuValueLabel.setText("preuValueLabel");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(Terror, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
-                            .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(numOcLabel)
-                                    .add(hotelLabel)
-                                    .add(poblacio)
-                                    .add(dIniLabel)
-                                    .add(dFILabel)
-                                    .add(habitacioLabel)
-                                    .add(preuTotalLabel)
-                                    .add(dniLabel))
-                                .add(48, 48, 48)
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(Tpoblacio, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(TdIni, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(TdFi, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(TnOcup, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(Thotel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(Thabitacio, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(Tpreu, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(dniValueTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 199, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
                         .add(98, 98, 98)
                         .add(dacord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(108, 108, 108)
-                        .add(cancela, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .add(cancela, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .add(70, 70, 70)
+                        .add(messageAreaLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 442, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(dniLabel)
+                            .add(poblacio)
+                            .add(dIniLabel)
+                            .add(dFILabel)
+                            .add(numOcLabel)
+                            .add(hotelLabel)
+                            .add(habitacioLabel)
+                            .add(preuTotalLabel))
+                        .add(48, 48, 48)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(preuValueLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                            .add(habitacioValueLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                            .add(hotelValueLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                            .add(numOcValueLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                            .add(dFiValueLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                            .add(poblacioValueLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 288, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(dniValueTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 199, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(dIniValueLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))))
+                .add(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -169,38 +162,38 @@ public class Window3 extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(poblacio)
-                    .add(Tpoblacio, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                    .add(poblacioValueLabel))
+                .add(15, 15, 15)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(TdIni, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(dIniLabel))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(TdFi, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(dFILabel))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(TnOcup, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(numOcLabel))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(Thotel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(hotelLabel))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(Thabitacio, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(habitacioLabel))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(Tpreu, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(preuTotalLabel))
+                    .add(dIniLabel)
+                    .add(dIniValueLabel))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(dFILabel)
+                    .add(dFiValueLabel))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(numOcLabel)
+                    .add(numOcValueLabel))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(hotelLabel)
+                    .add(hotelValueLabel))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(habitacioLabel)
+                    .add(habitacioValueLabel))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(preuTotalLabel)
+                    .add(preuValueLabel))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 51, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(dniLabel)
                     .add(dniValueTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(20, 20, 20)
-                .add(Terror, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 9, Short.MAX_VALUE)
+                .add(18, 18, 18)
+                .add(messageAreaLabel)
+                .add(33, 33, 33)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(dacord)
                     .add(cancela))
@@ -210,10 +203,6 @@ public class Window3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TdIniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TdIniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TdIniActionPerformed
-
     private void cancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelaActionPerformed
         // TODO add your handling code here:
          viewController.tanca();
@@ -221,7 +210,7 @@ public class Window3 extends javax.swing.JFrame {
 
     private void dacordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dacordActionPerformed
         // TODO add your handling code here:
-        String dni = this.dniValueTextField.getText();
+        String dni = this.dniValueTextField.getText().toString();
         if(dni.length() > 0){
             viewController.confirmacioWindow3(dni);
         }
@@ -258,24 +247,24 @@ public class Window3 extends javax.swing.JFrame {
         
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TdFi;
-    private javax.swing.JTextField TdIni;
-    private javax.swing.JTextField Terror;
-    private javax.swing.JTextField Thabitacio;
-    private javax.swing.JTextField Thotel;
-    private javax.swing.JTextField TnOcup;
-    private javax.swing.JTextField Tpoblacio;
-    private javax.swing.JTextField Tpreu;
     private javax.swing.JButton cancela;
     private javax.swing.JLabel dFILabel;
+    private javax.swing.JLabel dFiValueLabel;
     private javax.swing.JLabel dIniLabel;
+    private javax.swing.JLabel dIniValueLabel;
     private javax.swing.JButton dacord;
     private javax.swing.JLabel dniLabel;
     private javax.swing.JTextField dniValueTextField;
     private javax.swing.JLabel habitacioLabel;
+    private javax.swing.JLabel habitacioValueLabel;
     private javax.swing.JLabel hotelLabel;
+    private javax.swing.JLabel hotelValueLabel;
+    private javax.swing.JLabel messageAreaLabel;
     private javax.swing.JLabel numOcLabel;
+    private javax.swing.JLabel numOcValueLabel;
     private javax.swing.JLabel poblacio;
+    private javax.swing.JLabel poblacioValueLabel;
     private javax.swing.JLabel preuTotalLabel;
+    private javax.swing.JLabel preuValueLabel;
     // End of variables declaration//GEN-END:variables
 }

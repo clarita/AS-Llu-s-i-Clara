@@ -151,8 +151,11 @@ public class ReservarHabitacioController {
             vista.mostraDadesClient(c);
             //mostra la info de les finestres anteriors
         }catch(Exception e){
-           if("clientNoExisteix".equals(e.getMessage())){
+           if(e.getMessage() != null && "clientNoExisteix".equals(e.getMessage())){
                 vista.mostraMissatge("No hi ha cap client al sistema amb aquest DNI",3);
+           }
+           else {
+               e.printStackTrace();
            }
         }
         

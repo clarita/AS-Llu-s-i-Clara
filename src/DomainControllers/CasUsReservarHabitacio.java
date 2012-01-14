@@ -97,7 +97,7 @@ public class CasUsReservarHabitacio {
         CtrlDataFactory cdf = CtrlDataFactory.getInstance();
         ICtrlClient cc = cdf.getCtrlClient();
         Client c = cc.get(dni);
-        DadesReserva result = null;
+        DadesReserva result = new DadesReserva();
         result.dni = dni;
         result.nomClient = c.getNom();
         result.cognomsClient = c.getCognoms();
