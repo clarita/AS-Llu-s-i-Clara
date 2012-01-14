@@ -5,10 +5,7 @@
 package DomainModel;
 
 import java.util.HashSet;
-import java.util.ArrayList;
-import TupleTypes.DadesHotel;
 import java.util.Set;
-import java.util.Date;
 import org.hibernate.Session;
 import Hibernate.HibernateUtil;
 import org.junit.After;
@@ -31,7 +28,6 @@ public class PoblacioTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception { 
-        //ComentariId id = new ComentariId(nomH, dniC,d);
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
