@@ -41,6 +41,8 @@ public class TipusHabitacioTest {
     
     static Integer numeroHabitacio = 1;
     
+    static Integer idReserva = null;
+    
     static Calendar ini = Calendar.getInstance();
     static Calendar fi = Calendar.getInstance();
     
@@ -69,6 +71,9 @@ public class TipusHabitacioTest {
         Hotel hotel = new Hotel(nomHotel, descHotel, nomPoblacio, categoria);
         session.persist(hotel);
         
+        TipusHabitacio tipus = new TipusHabitacio(nomTipus, capacitat, descTipus);
+        session.persist(tipus);
+        
         HabitacioId id = new HabitacioId(nomHotel, numeroHabitacio);
         Habitacio habitacio = new Habitacio(id, numeroHabitacio, hotel, nomTipus);
         session.persist(habitacio);
@@ -77,24 +82,46 @@ public class TipusHabitacioTest {
         fi.set(2012, 1, 24);
         Reserva reserva = new Reserva(ini.getTime(), fi.getTime(), 1500F, dniClient, nomHotel, numeroHabitacio);
         session.persist(reserva);
+        idReserva = reserva.getIdReserva();
         
         habitacio.afReserva(reserva);
+        session.saveOrUpdate(habitacio);
         
-        TipusHabitacio tipus = new TipusHabitacio(nomTipus, capacitat, descTipus);
         HashSet<Habitacio> habitacions = new HashSet<Habitacio>();
         habitacions.add(habitacio);
         tipus.setHabitacions(habitacions);
+        session.saveOrUpdate(tipus);
         
-        session.persist(tipus);
-       
+        session.flush();
         tipusProva = tipus;
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        if (session != null) {
+        if (session != null) {            
+                                    
+            HabitacioId id = new HabitacioId(nomHotel, numeroHabitacio);
+            Habitacio hab = (Habitacio) session.get(Habitacio.class, id);
+            session.delete(hab);
+            
+            Reserva r = (Reserva) session.get(Reserva.class, idReserva);
+            session.delete(r);
+         
+            Hotel h = (Hotel) session.get(Hotel.class, nomHotel);
+            session.delete(h);
+            
             TipusHabitacio t = (TipusHabitacio) session.get(TipusHabitacio.class, nomTipus);
             session.delete(t);
+                        
+            Client c = (Client) session.get(Client.class, dniClient);
+            session.delete(c);
+
+            Poblacio p = (Poblacio) session.get(Poblacio.class, nomPoblacio);
+            session.delete(p);
+
+            CategoriaHotel ch = (CategoriaHotel) session.get(CategoriaHotel.class, nomCategoria);
+            session.delete(ch);
+            
             session.getTransaction().commit();
         } 
     }
