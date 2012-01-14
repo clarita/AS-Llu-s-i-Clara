@@ -8,8 +8,6 @@ import java.util.HashSet;
 import java.util.Calendar;
 import Hibernate.HibernateUtil;
 import org.hibernate.Session;
-import java.util.Date;
-import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,12 +23,28 @@ public class TipusHabitacioTest {
     
     static Session session = null;
     
-    static String nomTipus = "provaTipus";
+    static String nomTipus = "nomTipusProva";
     static Integer capacitat = 4;
-    static String desc = "provaDesc";
+    static String descTipus = "descTipusProva";
     
     static TipusHabitacio tipusProva = null;
 
+    static String nomHotel = "nomHotelProva";
+    static String nomCategoria = "categoriaProva";
+    static String descHotel = "descHotelProva";
+    static String nomPoblacio = "poblacioProva";
+    
+    static String dniClient = "dniProva";
+    static String nomClient = "nomClientProva";
+    static String cognomsClient = "cognomsClientProva";
+    static String emailClient = "emailClientProva";
+    
+    static Integer numeroHabitacio = 1;
+    
+    static Calendar ini = Calendar.getInstance();
+    static Calendar fi = Calendar.getInstance();
+    
+    
     public TipusHabitacioTest() {}
 
     @BeforeClass
@@ -42,10 +56,38 @@ public class TipusHabitacioTest {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
-        TipusHabitacio t = new TipusHabitacio(nomTipus, capacitat, desc);
-        session.persist(t);
         
-        tipusProva = new TipusHabitacio(nomTipus, capacitat, desc);
+        Poblacio poblacio = new Poblacio(nomPoblacio);
+        session.persist(poblacio);
+        
+        Client client = new Client(dniClient, nomClient, cognomsClient, emailClient);
+        session.persist(client);
+        
+        CategoriaHotel categoria = new CategoriaHotel(nomCategoria);
+        session.persist(categoria);
+        
+        Hotel hotel = new Hotel(nomHotel, descHotel, nomPoblacio, categoria);
+        session.persist(hotel);
+        
+        HabitacioId id = new HabitacioId(nomHotel, numeroHabitacio);
+        Habitacio habitacio = new Habitacio(id, numeroHabitacio, hotel, nomTipus);
+        session.persist(habitacio);
+         
+        ini.set(2012, 1, 17);
+        fi.set(2012, 1, 24);
+        Reserva reserva = new Reserva(ini.getTime(), fi.getTime(), 1500F, dniClient, nomHotel, numeroHabitacio);
+        session.persist(reserva);
+        
+        habitacio.afReserva(reserva);
+        
+        TipusHabitacio tipus = new TipusHabitacio(nomTipus, capacitat, descTipus);
+        HashSet<Habitacio> habitacions = new HashSet<Habitacio>();
+        habitacions.add(habitacio);
+        tipus.setHabitacions(habitacions);
+        
+        session.persist(tipus);
+       
+        tipusProva = tipus;
     }
 
     @AfterClass
@@ -70,7 +112,7 @@ public class TipusHabitacioTest {
     public void testHibernateFetch() {
         TipusHabitacio t = (TipusHabitacio) session.get(TipusHabitacio.class, nomTipus);
         String prova = t.getDescripcio();
-        assertEquals(prova, desc);
+        assertEquals(prova, descTipus);
     }
             
     /**
@@ -80,41 +122,27 @@ public class TipusHabitacioTest {
     @Test
     public void testNumDisp() {
         System.out.println("numDisp");
-        //Cal crear una habitacio amb reserves del tipus tipusProva
         
-        CategoriaHotel c = new CategoriaHotel("luxeprova");
-        Hotel h = new Hotel("prova", "caaar", "BCN", c);
-        
-        HabitacioId id = new HabitacioId("prova", 1);
-        Habitacio hab = new Habitacio(id, 1, h, nomTipus);
-        
-        
-        Calendar ini = Calendar.getInstance();
-        Calendar fi = Calendar.getInstance();
         ini.set(2012, 1, 17);
         fi.set(2012, 1, 24);
         
-        Reserva r = new Reserva(ini.getTime(), fi.getTime(), 1500F, "dniclient", "prova", 1);
-
-        hab.afReserva(r);
-        HashSet<Habitacio> habitacions = new HashSet<Habitacio>();
-        habitacions.add(hab);
-        tipusProva.setHabitacions(habitacions);
-        
-        Integer result = tipusProva.numDisp(ini.getTime(), fi.getTime(), "prova", 4);
+        Integer result = tipusProva.numDisp(ini.getTime(), fi.getTime(), nomHotel, capacitat);
         assertTrue(0 == result); //0 per les dates
         
         ini.set(2012, 1, 25);
         fi.set(2012, 1, 27);
-        result = tipusProva.numDisp(ini.getTime(), fi.getTime(), "prova", 3);
+        
+        result = tipusProva.numDisp(ini.getTime(), fi.getTime(), nomHotel, capacitat - 1);
         assertTrue(1 == result);
         
-        result = tipusProva.numDisp(ini.getTime(), fi.getTime(), "prova", 5);
+        result = tipusProva.numDisp(ini.getTime(), fi.getTime(), nomHotel, capacitat + 1);
         assertTrue(0 == result); //0 per la capacitat
     }
     
     @Test
     public void testObteNumHabLliure() {
-        
+        System.out.println("obteNumHabLliure");
+                
+       // tipusProva.obteNumeroHabLliure(nomHotel, null, null)
     }
 }
