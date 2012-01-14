@@ -20,13 +20,19 @@ public class Comentari {
     public Comentari(){};
     
     /**
+     * Creadora senzilla per tests
+     * @param id 
+     */
+    public Comentari(ComentariId id) {
+        this.id = id;
+    }
+    /**
      * creadora
      * @param aval és el valor de l'avaluació
      * @param desc és el valor que pren la descripció del comentari 
      * @param data és el valor de la data en que es crea el comentari
      * @param h és le nom de l'hotel del qual s'ha fet el comentari
      */
-    
     public Comentari(ComentariId id, Integer aval, String desc){
         this.avaluacio = aval;
         this.descripcio = desc;

@@ -18,6 +18,14 @@ public class Client {
         
     }
     
+    /**
+     * Creadora senzilla per a tests
+     * @param dni 
+     */
+    public Client(String dni) {
+        this.dni = dni;
+    }
+    
     public Client(String dni, String nom, String cognoms, String email) {
         this.dni = dni;
         this.nom = nom;
