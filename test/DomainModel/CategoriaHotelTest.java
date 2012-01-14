@@ -16,9 +16,12 @@ import static org.junit.Assert.*;
 /**
  *
  * @author elena_gratallops
+ * @author clara
  */
 public class CategoriaHotelTest {
-   static Session session = null;
+   
+    private static Session session = null;
+    private static String nomCategoria = "categoria prova";
     
     public CategoriaHotelTest() {
     }
@@ -28,7 +31,7 @@ public class CategoriaHotelTest {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            CategoriaHotel cat = new CategoriaHotel("tres estrelles");
+            CategoriaHotel cat = new CategoriaHotel(nomCategoria);
             session.persist(cat);
         } catch (RuntimeException e) {
             session.getTransaction().rollback();
@@ -39,7 +42,7 @@ public class CategoriaHotelTest {
     @AfterClass
     public static void tearDownClass() throws Exception {        
         if (session != null) {
-            CategoriaHotel cat = (CategoriaHotel) session.get(CategoriaHotel.class, "tres estrelles");
+            CategoriaHotel cat = (CategoriaHotel) session.get(CategoriaHotel.class, nomCategoria);
             session.delete(cat);
             session.getTransaction().commit();
         }
@@ -57,9 +60,10 @@ public class CategoriaHotelTest {
 
     @Test
     public void testHibernateFetch() {
-        CategoriaHotel cat = (CategoriaHotel) session.get(CategoriaHotel.class, "tres estrelles");
+        System.out.println("testHibernateFetch");
+        CategoriaHotel cat = (CategoriaHotel) session.get(CategoriaHotel.class, nomCategoria);
         String prova  = cat.getNom();
-        assertEquals(prova, "tres estrelles");
+        assertEquals(prova, nomCategoria);
     }  
 }
 
