@@ -8,8 +8,9 @@ package Presentation;
 import TupleTypes.DadesHabitacio;
 import TupleTypes.DadesHotel;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
+import javax.swing.border.TitledBorder;
 
 /**
  * Classe que representa la informació d'un hotel, per ser inclosa al scroll
@@ -17,14 +18,21 @@ import javax.swing.ListModel;
  */
 public class HotelView extends javax.swing.JPanel {
 
+    private Window2 vistaPare;
+    private String nomHotel;
     private ArrayList<String> nomsTipus = new ArrayList<String>();
     /** Creates new form HotelView */
-    public HotelView() {
+    public HotelView(Window2 pare) {
+        this.vistaPare = pare;
         initComponents();
     }
     
     public void loadData(DadesHotel hotel) {
-        hotelNameLabel.setText(hotel.nom);
+        TitledBorder leftBorder = BorderFactory.createTitledBorder(hotel.nom);
+        leftBorder.setTitleJustification(TitledBorder.LEFT);
+        this.setBorder(leftBorder);
+        nomHotel = hotel.nom;
+        
         hotelDescriptionLabel.setText(hotel.desc);
         DefaultListModel model = new DefaultListModel();
         for(DadesHabitacio hab : hotel.habs){
@@ -45,12 +53,9 @@ public class HotelView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        hotelNameLabel = new javax.swing.JLabel();
         hotelDescriptionLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tipusHabitacionsList = new javax.swing.JList();
-
-        hotelNameLabel.setText("Hotel");
 
         hotelDescriptionLabel.setText("Description");
 
@@ -59,35 +64,46 @@ public class HotelView extends javax.swing.JPanel {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        tipusHabitacionsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                tipusHabitacionsListValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(tipusHabitacionsList);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, hotelDescriptionLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, hotelNameLabel))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(hotelDescriptionLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(hotelNameLabel)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(hotelDescriptionLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 55, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                .add(89, 89, 89))
+                .add(hotelDescriptionLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(30, 30, 30)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tipusHabitacionsListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_tipusHabitacionsListValueChanged
+        int selection = tipusHabitacionsList.getSelectedIndex();
+        String tipusSeleccionat = nomsTipus.get(selection);
+        vistaPare.habitacioWasSelected(nomHotel, tipusSeleccionat);
+    }//GEN-LAST:event_tipusHabitacionsListValueChanged
+
+    public void unselect() {
+        this.tipusHabitacionsList.clearSelection();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel hotelDescriptionLabel;
-    private javax.swing.JLabel hotelNameLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList tipusHabitacionsList;
     // End of variables declaration//GEN-END:variables

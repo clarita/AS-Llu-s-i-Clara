@@ -32,6 +32,7 @@ public class CasUsReservarHabitacio {
     String poblacio;
     Date dataInici;
     Date dataFi;
+    Integer numOcup;
     String dniClient;
     String nomHotel;
     String tipusHabitacio;
@@ -62,6 +63,12 @@ public class CasUsReservarHabitacio {
         
         TxBuscarHabitacio buscar = new TxBuscarHabitacio(pob, dIni, dFi, numOcup);
         buscar.executar();
+        this.poblacio = pob;
+        this.dataInici = dIni;
+        this.dataFi = dFi;
+        
+        //aquest atribut no hi era al contracte original però és còmode emmagatzemar-lo per retornar-lo amb la resta de dades
+        this.numOcup = numOcup;
         return buscar.obteResultat();   
     }
     
@@ -77,6 +84,7 @@ public class CasUsReservarHabitacio {
         DadesReserva result = new DadesReserva();
         result.dIni = this.dataInici;
         result.dFi = this.dataFi;
+        result.numOc = this.numOcup;
         result.nomHotel = this.nomHotel;
         result.nomTipusHab = this.tipusHabitacio;
         result.pob = this.poblacio;
@@ -96,6 +104,7 @@ public class CasUsReservarHabitacio {
         result.emailClient = c.getEmail();
         result.dIni = this.dataInici;
         result.dFi = this.dataFi;
+        result.numOc = this.numOcup;
         result.nomHotel = this.nomHotel;
         result.nomTipusHab = this.tipusHabitacio;
         result.pob = this.poblacio;

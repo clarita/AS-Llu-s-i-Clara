@@ -12,7 +12,12 @@ package Presentation;
 
 import TupleTypes.DadesHotel;
 import TupleTypes.DadesReserva;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,6 +26,12 @@ import java.util.Set;
 public class Window2 extends javax.swing.JFrame {
 
     private ReservarHabitacioView viewController;
+    Map<String,HotelView> contingutLlistaHotels = new HashMap<String,HotelView>();
+    
+    //atributs per facilitar el càlcul
+    private String currentHotel;
+    private String currentTipus;
+    
     /** Creates new form Window2 */
     public Window2(ReservarHabitacioView controller) {
         this.viewController = controller;
@@ -146,9 +157,8 @@ public class Window2 extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         //TODO: agafar els correctes
-        String nomHotel = "";
-        String nomTipus = "";
-        viewController.confirmacioWindow2(nomHotel, nomTipus);
+        if((currentHotel != null) && (currentTipus != null))
+        viewController.confirmacioWindow2(currentHotel, currentTipus);
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -187,17 +197,37 @@ public class Window2 extends javax.swing.JFrame {
     }
     
     public void loadData(DadesReserva basicData, Set<DadesHotel> data) {
+        SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
         poblacioValueLabel.setText(basicData.pob);
-        dIniValueLabel.setText(basicData.dIni.toString());
-        dFiValueLabel.setText(basicData.dIni.toString());
+        dIniValueLabel.setText(s.format(basicData.dIni));
+        dFiValueLabel.setText(s.format(basicData.dFi));
         numOcValueLabel.setText(basicData.numOc.toString());
         System.out.println("printing " + data.size() + " hotels");
+        
+        JPanel infoHabPanel = new JPanel();
+        infoHabPanel.setLayout(new BoxLayout(infoHabPanel, BoxLayout.Y_AXIS));
+        
         for(DadesHotel hotel : data) {
-            HotelView vistaHotel = new HotelView();
+            HotelView vistaHotel = new HotelView(this);
             vistaHotel.loadData(hotel);
-            hotelsScrollPanel.add(vistaHotel);
+            infoHabPanel.add(vistaHotel);
+            contingutLlistaHotels.put(hotel.nom,vistaHotel);
         }
+        hotelsScrollPanel.setViewportView(infoHabPanel);
         hotelsScrollPanel.validate();
+    }
+    
+    public void habitacioWasSelected(String nomHotel, String nomTipus) {
+        currentHotel = nomHotel;
+        currentTipus = nomTipus;
+        
+        //eliminem la selecció sobre els altres hotels
+        Set<String> mapKeys = contingutLlistaHotels.keySet();
+        for(String key : mapKeys) {
+            if(!key.equals(nomHotel)){
+                contingutLlistaHotels.get(key).unselect();
+            }
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

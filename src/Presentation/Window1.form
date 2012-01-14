@@ -151,6 +151,9 @@
       </Properties>
     </Component>
     <Component class="com.imagine.component.calendar.CalendarComponent" name="dFiCalendar">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Date date = dIniCalendar.getDate();&#xa;Calendar c = Calendar.getInstance();&#xa;c.setTime(date);&#xa;c.add(Calendar.DATE, 1);&#xa;Date newDate = c.getTime();&#xa;dFiCalendar.setDate(newDate);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="numocLabel">
       <Properties>

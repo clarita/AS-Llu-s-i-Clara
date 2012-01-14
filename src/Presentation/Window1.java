@@ -84,6 +84,13 @@ public class Window1 extends javax.swing.JFrame implements com.imagine.component
 
         dFiLabel.setText("Data de finalització");
 
+        Date date = dIniCalendar.getDate();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, 1);
+        Date newDate = c.getTime();
+        dFiCalendar.setDate(newDate);
+
         numocLabel.setText("Número d'ocupants");
 
         messageArea.setText(" ");

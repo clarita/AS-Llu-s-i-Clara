@@ -16,12 +16,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="hotelDescriptionLabel" pref="360" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" alignment="0" pref="360" max="32767" attributes="0"/>
-                  <Component id="hotelDescriptionLabel" alignment="0" pref="360" max="32767" attributes="0"/>
-                  <Component id="hotelNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -30,23 +29,15 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="hotelNameLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="hotelDescriptionLabel" min="-2" pref="55" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="104" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+              <Component id="hotelDescriptionLabel" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="91" max="-2" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="hotelNameLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Hotel"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="hotelDescriptionLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Description"/>
@@ -71,6 +62,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="tipusHabitacionsListValueChanged"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
