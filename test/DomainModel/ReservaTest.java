@@ -4,29 +4,93 @@
  */
 package DomainModel;
 
-import java.util.Date;
+import Hibernate.HibernateUtil;
+import java.util.Calendar;
+import org.hibernate.Session;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author lluisgh28
  */
 public class ReservaTest {
+   
+    static Session session;
+    
+    static Reserva reservaProva;
+    
+    static Calendar cIni = Calendar.getInstance();
+    static Calendar cFi = Calendar.getInstance();
+    
+    static String dniClient = "dniProva";
+    static String nomHotel = "hotelProva";
+    static Integer numeroHab = 1;
+    static Float preu = 1500F;
+    
+    static String desc = "descProva";
+    static String nomPoblacio = "poblacioProva";
+    static String nomCategoria = "categoriaProva";
+    static String nomTipusHab = "tipusProva";
+    static HabitacioId idHab = new HabitacioId(nomHotel, numeroHab);
+
+    static Integer idReserva;
     
     public ReservaTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+    
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+        } catch (RuntimeException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        }
+        
+        Poblacio p = new Poblacio(nomPoblacio);
+        session.persist(p);
+        
+        CategoriaHotel ch = new CategoriaHotel(nomCategoria);
+        session.persist(ch);
+        
+        Hotel h = new Hotel(nomHotel, desc, nomPoblacio, ch);
+        session.persist(h);
+        
+        TipusHabitacio t = new TipusHabitacio(nomTipusHab, 4, "descTipus");
+        session.persist(t);
+        
+        Habitacio hab = new Habitacio(idHab, numeroHab, h, nomTipusHab);
+        session.persist(hab);
+        
+        Client c = new Client(dniClient);
+        session.persist(c);
+        
+        cIni.set(2011, 0, 14);
+        cFi.set(2011, 0, 16);
+        reservaProva = new Reserva(cIni.getTime(), cFi.getTime(), preu, dniClient, nomHotel, numeroHab);
+        session.persist(reservaProva);
+        idReserva = reservaProva.getIdReserva();
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        
+        if (session != null) {
+            session.delete(session.get(Reserva.class, idReserva));
+            session.delete(session.get(Client.class, dniClient));
+            session.delete(session.get(Habitacio.class, idHab));
+            session.delete(session.get(TipusHabitacio.class, nomTipusHab));
+            session.delete(session.get(Hotel.class, nomHotel));
+            session.delete(session.get(CategoriaHotel.class, nomCategoria));
+            session.delete(session.get(Poblacio.class, nomPoblacio));
+            session.getTransaction().commit();
+        }
     }
     
     @Before
@@ -43,123 +107,7 @@ public class ReservaTest {
     @Test
     public void testEsSolapa() {
         System.out.println("esSolapa");
-        Date dIni = null;
-        Date dFi = null;
-        Reserva instance = new Reserva();
-        boolean expResult = false;
-        boolean result = instance.esSolapa(dIni, dFi);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getDataFi method, of class Reserva.
-     */
-    @Test
-    public void testGetDataFi() {
-        System.out.println("getDataFi");
-        Reserva instance = new Reserva();
-        Date expResult = null;
-        Date result = instance.getDataFi();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setDataFi method, of class Reserva.
-     */
-    @Test
-    public void testSetDataFi() {
-        System.out.println("setDataFi");
-        Date dataFi = null;
-        Reserva instance = new Reserva();
-        instance.setDataFi(dataFi);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getDataInici method, of class Reserva.
-     */
-    @Test
-    public void testGetDataInici() {
-        System.out.println("getDataInici");
-        Reserva instance = new Reserva();
-        Date expResult = null;
-        Date result = instance.getDataInici();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setDataInici method, of class Reserva.
-     */
-    @Test
-    public void testSetDataInici() {
-        System.out.println("setDataInici");
-        Date dataInici = null;
-        Reserva instance = new Reserva();
-        instance.setDataInici(dataInici);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getDataReserva method, of class Reserva.
-     */
-    @Test
-    public void testGetDataReserva() {
-        System.out.println("getDataReserva");
-        Reserva instance = new Reserva();
-        Date expResult = null;
-        Date result = instance.getDataReserva();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setDataReserva method, of class Reserva.
-     */
-    @Test
-    public void testSetDataReserva() {
-        System.out.println("setDataReserva");
-        Date dataReserva = null;
-        Reserva instance = new Reserva();
-        instance.setDataReserva(dataReserva);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    
-    /**
-     * Test of getPreuTotal method, of class Reserva.
-     */
-    @Test
-    public void testGetPreuTotal() {
-        System.out.println("getPreuTotal");
-        Reserva instance = new Reserva();
-        Float expResult = null;
-        Float result = instance.getPreuTotal();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPreuTotal method, of class Reserva.
-     */
-    @Test
-    public void testSetPreuTotal() {
-        System.out.println("setPreuTotal");
-        Float preuTotal = null;
-        Reserva instance = new Reserva();
-        instance.setPreuTotal(preuTotal);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
     @Test
