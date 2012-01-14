@@ -12,6 +12,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
+
 
 /**
  *
@@ -108,6 +110,19 @@ public class ReservaTest {
     public void testEsSolapa() {
         System.out.println("esSolapa");
         
+         Boolean result = reservaProva.esSolapa(cIni.getTime(), cFi.getTime());
+         assertTrue(result);
+         
+         cIni.set(2011, 0, 15);
+         cFi.set(2011, 0, 17);
+         result = reservaProva.esSolapa(cIni.getTime(), cFi.getTime());
+         assertTrue(result);
+         
+         cIni.set(2011, 0, 11);
+         cFi.set(2011, 0, 13);
+         result = reservaProva.esSolapa(cIni.getTime(), cFi.getTime());
+         assertFalse(result);
+         // hi ha molts casos... de moment, no els comprovo tots.
     }
     
     @Test
