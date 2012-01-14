@@ -5,6 +5,7 @@
 package DomainModel;
 
 import Hibernate.HibernateUtil;
+import java.util.Calendar;
 import org.hibernate.Session;
 import java.util.Date;
 import org.junit.After;
@@ -30,8 +31,8 @@ public class HabitacioTest {
     static String nomCategoria = "provaNomCategoria";
     static Integer numeroHabitacio = 28;
     
-    static Date dIni = new Date();
-    static Date dFi = new Date();
+    static Date dIni = null;
+    static Date dFi = null;
     
     static Float preuReserva = 1500F;
     static String dniClient = "dniProva";
@@ -45,7 +46,7 @@ public class HabitacioTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-         try {
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
         } catch (RuntimeException e) {
@@ -53,6 +54,14 @@ public class HabitacioTest {
             e.printStackTrace();
         }
          
+        Calendar cIni = Calendar.getInstance();
+        cIni.set(2012, 1, 14);
+        dIni = cIni.getTime();
+        
+        Calendar cFi = Calendar.getInstance();
+        cFi.set(2012, 1, 16);
+        dFi = cFi.getTime();
+        
         Poblacio p = new Poblacio(poblacio);
         session.persist(p);
         
@@ -119,7 +128,12 @@ public class HabitacioTest {
         Boolean result = habProves.estaDisp(dIni, dFi);
         assertFalse(result);
         
-        result = habProves.estaDisp(new Date(), new Date());
+        Calendar ini = Calendar.getInstance();
+        Calendar fi = Calendar.getInstance();
+        ini.set(2012, 1, 17);
+        fi.set(2012, 1, 24);
+        
+        result = habProves.estaDisp(ini.getTime(), fi.getTime());
         assertTrue(result);
     }
     
