@@ -169,7 +169,12 @@ public class TipusHabitacioTest {
     @Test
     public void testObteNumHabLliure() {
         System.out.println("obteNumHabLliure");
-                
-       // tipusProva.obteNumeroHabLliure(nomHotel, null, null)
+                       
+        ini.set(2012, 1, 25);
+        fi.set(2012, 1, 27);
+
+        Integer result = tipusProva.obteNumeroHabLliure(nomHotel, ini.getTime(), fi.getTime());
+        
+        assertTrue(result == 1);
     }
 }
