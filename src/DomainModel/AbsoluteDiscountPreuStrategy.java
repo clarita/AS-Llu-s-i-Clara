@@ -20,7 +20,8 @@ public class AbsoluteDiscountPreuStrategy implements IPreuStrategy {
      * Creadora amb parametre de descompte
      * @param descompte 
      */
-    public AbsoluteDiscountPreuStrategy(float descompte){
+    public AbsoluteDiscountPreuStrategy(PreuTipusHabitacioId id, float descompte){
+        this.id = id;
         this.descompte = descompte;
     }
     

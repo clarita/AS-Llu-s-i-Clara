@@ -33,20 +33,15 @@ public class AbsoluteDiscountPreuStrategyTest {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
     
-            AbsoluteDiscountPreuStrategy adps = new AbsoluteDiscountPreuStrategy(descompte);
+            PreuTipusHabitacioId id = new PreuTipusHabitacioId(nomHotel,nomTipus);
+            AbsoluteDiscountPreuStrategy adps = new AbsoluteDiscountPreuStrategy(id,descompte);
             Hotel hotel = new Hotel();
             hotel.setNom(nomHotel);
-            session.saveOrUpdate(hotel);
-            TipusHabitacio tipus = new TipusHabitacio();
-            tipus.setNom(nomTipus);
-            PreuTipusHabitacio pth = new PreuTipusHabitacio();
-            pth.setTipus(tipus);
-            PreuTipusHabitacioId id = new PreuTipusHabitacioId(nomHotel,nomTipus);
-            pth.setId(id);
-            pth.setPreu(preu);
-            adps.setId(id);
-            pth.setStrategy(adps);
-            session.saveOrUpdate(tipus);
+            session.persist(hotel);
+            TipusHabitacio tipus = new TipusHabitacio(nomTipus,3,"desc");
+            session.persist(tipus);
+            PreuTipusHabitacio pth = new PreuTipusHabitacio(id,
+                    preu,tipus,adps);
             session.saveOrUpdate(pth);
             session.saveOrUpdate(adps);
         } catch (RuntimeException e) {
@@ -84,6 +79,21 @@ public class AbsoluteDiscountPreuStrategyTest {
     @After
     public void tearDown() {
     }
+    
+    @Test
+    public void hibernateFetch() {
+        System.out.println("hibernateFetch");
+        AbsoluteDiscountPreuStrategy instance = (AbsoluteDiscountPreuStrategy) session.get(
+                AbsoluteDiscountPreuStrategy.class, new PreuTipusHabitacioId(nomHotel,nomTipus));
+        
+        float expResult = descompte;
+        float result = instance.getDescompte();
+        assertEquals(expResult, result, 0.0);
+        
+        String nomHotelObtingut = instance.getId().getNomhotel();
+        assertEquals(nomHotelObtingut, nomHotel);
+        
+    }
 
     /**
      * Test of calculaPreu method, of class AbsoluteDiscountPreuStrategy.
@@ -107,7 +117,7 @@ public class AbsoluteDiscountPreuStrategyTest {
      */
     @Test
     public void testCalculaPreuH() {
-        System.out.println("calculaPreu");
+        System.out.println("calculaPreuHibernate");
         PreuTipusHabitacio p = (PreuTipusHabitacio) session.get(
                 PreuTipusHabitacio.class, new PreuTipusHabitacioId(nomHotel,nomTipus));
         

@@ -76,10 +76,9 @@ public class CtrlHotelTest {
     @Test
     public void testGet() throws Exception {
         System.out.println("get");
-        String nom = nomHotel;
         CtrlHotel instance = new CtrlHotel();
-        Hotel result = instance.get(nom);
-        String nomHotel = result.getNom();
+        Hotel result = instance.get(nomHotel);
+        String nom = result.getNom();
         assertEquals(nom, nomHotel);
     }
 }

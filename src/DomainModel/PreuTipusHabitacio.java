@@ -20,6 +20,13 @@ public class PreuTipusHabitacio {
         this.preu = 0;
     }
     
+    public PreuTipusHabitacio(PreuTipusHabitacioId id, float preu, TipusHabitacio tipus, IPreuStrategy strategy){
+        this.id = id;
+        this.preu = preu;
+        this.tipus = tipus;
+        this.strategy = strategy;
+    }
+    
     /**
      * Getter de l'identificador, requerit per Hibernate
      * @return 
