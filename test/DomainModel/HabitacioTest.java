@@ -124,7 +124,6 @@ public class HabitacioTest {
     
     @Test
     public void testEstaDisp() {
-        //TODO: fer-ho amb dates dels casos límit (anys diferents i tal) i donant els valors d'any, dia, etc.
         Reserva r = new Reserva(dIni, dFi, preuReserva, dniClient, nomHotel, numeroHabitacio);
         habProves.afReserva(r);
         

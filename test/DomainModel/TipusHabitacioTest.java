@@ -4,6 +4,8 @@
  */
 package DomainModel;
 
+import java.util.HashSet;
+import java.util.Calendar;
 import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 import java.util.Date;
@@ -22,6 +24,12 @@ import static org.junit.Assert.*;
 public class TipusHabitacioTest {
     
     static Session session = null;
+    
+    static String nomTipus = "provaTipus";
+    static Integer capacitat = 4;
+    static String desc = "provaDesc";
+    
+    static TipusHabitacio tipusProva = null;
 
     public TipusHabitacioTest() {}
 
@@ -34,12 +42,19 @@ public class TipusHabitacioTest {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
-        TipusHabitacio t = new TipusHabitacio("Suite", 4, "Suite per a 4 persones.");
+        TipusHabitacio t = new TipusHabitacio(nomTipus, capacitat, desc);
         session.persist(t);
+        
+        tipusProva = new TipusHabitacio(nomTipus, capacitat, desc);
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        if (session != null) {
+            TipusHabitacio t = (TipusHabitacio) session.get(TipusHabitacio.class, nomTipus);
+            session.delete(t);
+            session.getTransaction().commit();
+        } 
     }
     
     @Before
@@ -48,20 +63,14 @@ public class TipusHabitacioTest {
     
     @After
     public void tearDown() {
-        if (session != null) {
-            TipusHabitacio t = (TipusHabitacio) session.get(TipusHabitacio.class, "Suite");
-            session.delete(t);
-            session.getTransaction().commit();
-        }                
-
     }
 
     
     @Test
     public void testHibernateFetch() {
-        TipusHabitacio t = (TipusHabitacio) session.get(TipusHabitacio.class, "Suite");
+        TipusHabitacio t = (TipusHabitacio) session.get(TipusHabitacio.class, nomTipus);
         String prova = t.getDescripcio();
-        assertEquals(prova, "Suite per a 4 persones.");
+        assertEquals(prova, desc);
     }
             
     /**
@@ -71,15 +80,41 @@ public class TipusHabitacioTest {
     @Test
     public void testNumDisp() {
         System.out.println("numDisp");
-        Date dIni = null;
-        Date dFi = null;
-        String nomHotel = "";
-        Integer numOcup = null;
-        TipusHabitacio instance = new TipusHabitacio();
-        Integer expResult = null;
-        Integer result = instance.numDisp(dIni, dFi, nomHotel, numOcup);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //Cal crear una habitacio amb reserves del tipus tipusProva
+        
+        CategoriaHotel c = new CategoriaHotel("luxeprova");
+        Hotel h = new Hotel("prova", "caaar", "BCN", c);
+        
+        HabitacioId id = new HabitacioId("prova", 1);
+        Habitacio hab = new Habitacio(id, 1, h, nomTipus);
+        
+        
+        Calendar ini = Calendar.getInstance();
+        Calendar fi = Calendar.getInstance();
+        ini.set(2012, 1, 17);
+        fi.set(2012, 1, 24);
+        
+        Reserva r = new Reserva(ini.getTime(), fi.getTime(), 1500F, "dniclient", "prova", 1);
+
+        hab.afReserva(r);
+        HashSet<Habitacio> habitacions = new HashSet<Habitacio>();
+        habitacions.add(hab);
+        tipusProva.setHabitacions(habitacions);
+        
+        Integer result = tipusProva.numDisp(ini.getTime(), fi.getTime(), "prova", 4);
+        assertTrue(0 == result); //0 per les dates
+        
+        ini.set(2012, 1, 25);
+        fi.set(2012, 1, 27);
+        result = tipusProva.numDisp(ini.getTime(), fi.getTime(), "prova", 3);
+        assertTrue(1 == result);
+        
+        result = tipusProva.numDisp(ini.getTime(), fi.getTime(), "prova", 5);
+        assertTrue(0 == result); //0 per la capacitat
+    }
+    
+    @Test
+    public void testObteNumHabLliure() {
+        
     }
 }
