@@ -5,7 +5,9 @@
 <hibernate-mapping>
     <class name="DomainModel.Reserva" table="RESERVA" schema="APP">
         <id name="idReserva" type="integer">
-            <generator class="increment" />
+            <generator class="increment">
+                <param name="schema">APP</param>
+            </generator>
         </id>
         <property name="nomHotel" type="string">
             <column name="NOMHOTEL" />
