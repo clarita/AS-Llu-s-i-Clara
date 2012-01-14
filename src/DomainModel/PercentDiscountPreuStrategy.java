@@ -24,7 +24,8 @@ public class PercentDiscountPreuStrategy implements IPreuStrategy {
      * Creadora amb parametre de descompte
      * @param perc 
      */
-    public PercentDiscountPreuStrategy(float perc){
+    public PercentDiscountPreuStrategy(PreuTipusHabitacioId id, float perc){
+        this.id = id;
         this.perc = perc;
     }
     

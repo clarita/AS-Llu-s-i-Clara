@@ -33,20 +33,15 @@ public class PercentDiscountPreuStrategyTest {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
     
-            PercentDiscountPreuStrategy pdps = new PercentDiscountPreuStrategy(perc);
+            PreuTipusHabitacioId id = new PreuTipusHabitacioId(nomHotel,nomTipus);
+            PercentDiscountPreuStrategy pdps = new PercentDiscountPreuStrategy(id,perc);
             Hotel hotel = new Hotel();
             hotel.setNom(nomHotel);
-            session.saveOrUpdate(hotel);
-            TipusHabitacio tipus = new TipusHabitacio();
-            tipus.setNom(nomTipus);
-            PreuTipusHabitacio pth = new PreuTipusHabitacio();
-            pth.setTipus(tipus);
-            PreuTipusHabitacioId id = new PreuTipusHabitacioId(nomHotel,nomTipus);
-            pth.setId(id);
-            pth.setPreu(preu);
-            pdps.setId(id);
-            pth.setStrategy(pdps);
-            session.saveOrUpdate(tipus);
+            session.persist(hotel);
+            TipusHabitacio tipus = new TipusHabitacio(nomTipus,3,"desc");
+            session.persist(tipus);
+            PreuTipusHabitacio pth = new PreuTipusHabitacio(id,
+                    preu,tipus,pdps);
             session.saveOrUpdate(pth);
             session.saveOrUpdate(pdps);
         } catch (RuntimeException e) {
@@ -81,6 +76,21 @@ public class PercentDiscountPreuStrategyTest {
     
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void hibernateFetch() {
+        System.out.println("hibernateFetch");
+        PercentDiscountPreuStrategy instance = (PercentDiscountPreuStrategy) session.get(
+                PercentDiscountPreuStrategy.class, new PreuTipusHabitacioId(nomHotel,nomTipus));
+        
+        float expResult = perc;
+        float result = instance.getPerc();
+        assertEquals(expResult, result, 0.0);
+        
+        String nomHotelObtingut = instance.getId().getNomhotel();
+        assertEquals(nomHotelObtingut, nomHotel);
+        
     }
 
     /**
