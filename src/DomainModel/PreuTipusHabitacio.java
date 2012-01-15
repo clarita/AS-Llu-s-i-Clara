@@ -132,16 +132,4 @@ public class PreuTipusHabitacio {
     public Integer numDisp(Date dIni, Date dFi, String nomHotel, Integer numOcup) {
         return this.tipus.numDisp(dIni, dFi, nomHotel, numOcup);
     }
-    
-    /**
-     * Demana al tipus habitació el número d'una habitació lliure
-     * @param nomHotel
-     * @param dIni
-     * @param dFi
-     * @return 
-     */
-    public Integer obteNumeroHabLliure(String nomHotel, Date dIni, Date dFi) {
-        return this.tipus.obteNumeroHabLliure(nomHotel, dIni, dFi);
-    }
-
 }
