@@ -17,7 +17,8 @@ package Presentation;
 public class Window5 extends javax.swing.JFrame {
     private ReservarHabitacioView viewController;
     /** Creates new form Window5 */
-    public Window5() {
+    public Window5(ReservarHabitacioView viewController) {
+        this.viewController = viewController;
         initComponents();
     }
 
@@ -103,14 +104,6 @@ public class Window5 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Window5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new Window5().setVisible(true);
-            }
-        });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

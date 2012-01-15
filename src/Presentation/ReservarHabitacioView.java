@@ -128,9 +128,20 @@ public class ReservarHabitacioView {
      */
     public void mostraDadesClient(DadesReserva dades) {
         window3.setVisible(false);
-        window4 = new Window4();
-        //window4.mostraClient(dades);
+        window4 = new Window4(this);
+        window4.mostraDades(dades);
         window4.setVisible(true);
+    }
+    
+    /**
+     * Funció per a rebre l'esdeveniment que es produeix al clicar "D'acord"
+     * a la pantalla 4.
+     * @param numTarg
+     * @param dCad 
+     * @author lluisgh28
+     */
+    public void confirmacioWindow4(String numTarg, Date dCad) {
+        controlador.PrOkRealitzaPagament(numTarg, dCad);
     }
     
     /**
@@ -139,7 +150,7 @@ public class ReservarHabitacioView {
      */
     public void mostraMissatgeFi() {
         window4.setVisible(false);
-        window5 = new Window5();
+        window5 = new Window5(this);
         window5.setVisible(true);
     }
     
