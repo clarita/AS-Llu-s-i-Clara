@@ -50,8 +50,7 @@ public class CtrlHabitacioTest {
             session.persist(hotel);
             TipusHabitacio tipus = new TipusHabitacio(nomTipus,2,"desc");
             session.persist(tipus);
-            Habitacio habitacio = new Habitacio(new HabitacioId(nomHotel,numeroHabitacio), 
-                    numeroHabitacio, hotel, nomTipus);
+            Habitacio habitacio = new Habitacio(new HabitacioId(nomHotel,numeroHabitacio), hotel, nomTipus);
             session.persist(habitacio);
             
         } catch (RuntimeException e) {

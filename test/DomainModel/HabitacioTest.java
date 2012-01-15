@@ -75,10 +75,10 @@ public class HabitacioTest {
         TipusHabitacio t = new TipusHabitacio(nomTipusHab, capacitat, descTipus);
         session.persist(t);
         
-        Habitacio hab = new Habitacio(id, numeroHabitacio, h, nomTipusHab);
+        Habitacio hab = new Habitacio(id, h, nomTipusHab);
         session.persist(hab);
         
-        habProves = new Habitacio(id, numeroHabitacio, h, nomTipusHab);
+        habProves = new Habitacio(id, h, nomTipusHab);
     }
 
     @AfterClass

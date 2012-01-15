@@ -75,7 +75,7 @@ public class TipusHabitacioTest {
         TipusHabitacio tipus = new TipusHabitacio(nomTipus, capacitat, descTipus);
         session.persist(tipus);
         
-        Habitacio habitacio = new Habitacio(idHab, numeroHabitacio, hotel, nomTipus);
+        Habitacio habitacio = new Habitacio(idHab, hotel, nomTipus);
         session.persist(habitacio);
          
         ini.set(2012, 1, 17);

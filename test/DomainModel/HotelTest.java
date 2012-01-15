@@ -68,7 +68,7 @@ public class HotelTest {
             
             session.persist(pth);
             session.persist(adps);
-            Habitacio habitacio = new Habitacio(new HabitacioId(nomHotel,numeroHabitacio),numeroHabitacio,h,nomTipus);
+            Habitacio habitacio = new Habitacio(new HabitacioId(nomHotel,numeroHabitacio),h,nomTipus);
             session.persist(habitacio);
             
             Client client = new Client(dniC);

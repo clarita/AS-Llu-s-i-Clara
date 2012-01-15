@@ -67,7 +67,7 @@ public class ReservaTest {
         TipusHabitacio t = new TipusHabitacio(nomTipusHab, 4, "descTipus");
         session.persist(t);
         
-        Habitacio hab = new Habitacio(idHab, numeroHab, h, nomTipusHab);
+        Habitacio hab = new Habitacio(idHab, h, nomTipusHab);
         session.persist(hab);
         
         Client c = new Client(dniClient);
