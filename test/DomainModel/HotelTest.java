@@ -170,23 +170,6 @@ public class HotelTest {
     }
 
     /**
-     * Test of obteNumeroHabLliure method, of class Hotel.
-     */
-    @Ignore
-    @Test
-    public void testObteNumeroHabLliure() {
-        System.out.println("obteNumeroHabLliure");
-        Hotel hotel = (Hotel)session.get(Hotel.class, nomHotel);
-        PreuTipusHabitacio pth = (PreuTipusHabitacio)session.get(
-                PreuTipusHabitacio.class, new PreuTipusHabitacioId(nomHotel,nomTipus));
-        
-        int obtingutsPerTipus = pth.obteNumeroHabLliure(nomHotel, dIni, dFi);
-        int obtingutsPerHotel = hotel.obteNumeroHabLliure(nomTipus, dIni, dFi);
-        
-        assertEquals(obtingutsPerTipus, obtingutsPerHotel);
-    }
-
-    /**
      * Test of estaDisp method, of class Hotel.
      */
     @Ignore
