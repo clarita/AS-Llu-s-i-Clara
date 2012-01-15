@@ -26,6 +26,7 @@ public class Window1 extends javax.swing.JFrame implements com.imagine.component
     /** Creates new form Window1 */
     public Window1(ReservarHabitacioView controller) {
         this.viewController = controller;
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
     }
     

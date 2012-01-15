@@ -35,6 +35,7 @@ public class Window2 extends javax.swing.JFrame {
     /** Creates new form Window2 */
     public Window2(ReservarHabitacioView controller) {
         this.viewController = controller;
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
     }
     

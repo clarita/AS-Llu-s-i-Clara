@@ -18,6 +18,7 @@ public class Window3 extends javax.swing.JFrame {
     /** Creates new form Window3 */
     public Window3(ReservarHabitacioView viewController) {
         this.viewController = viewController;
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
     }
     
