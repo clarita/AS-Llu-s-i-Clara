@@ -70,10 +70,10 @@ public class HotelTest {
             session.persist(adps);
             Habitacio habitacio = new Habitacio(new HabitacioId(nomHotel,numeroHabitacio),h,nomTipus);
             session.persist(habitacio);
-            
+            tipus.getHabitacions().add(habitacio);
             Client client = new Client(dniC);
             session.persist(client);
-            Comentari comentari = new Comentari(new ComentariId(nomHotel, dniC, dIni));
+            Comentari comentari = new Comentari(new ComentariId(nomHotel, dniC, dIni),7,"desc");
             session.persist(comentari);
             Set<Comentari> comentaris = new HashSet<Comentari>();
             comentaris.add(comentari);
@@ -172,12 +172,11 @@ public class HotelTest {
     /**
      * Test of estaDisp method, of class Hotel.
      */
-    @Ignore
     @Test
     public void testEstaDisp() {
         System.out.println("estaDisp");
         Hotel hotel = (Hotel)session.get(Hotel.class, nomHotel);
-        boolean resultat = hotel.estaDisp(dIni, dFi, numeroHabitacio, new DadesHotel());
+        boolean resultat = hotel.estaDisp(dIni, dFi, 1, new DadesHotel());
         assertTrue(resultat);
     }
 
