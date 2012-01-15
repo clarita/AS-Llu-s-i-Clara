@@ -9,6 +9,7 @@ import DataInterfaces.ICtrlClient;
 import DataInterfaces.ICtrlHabitacio;
 import DataInterfaces.ICtrlHotel;
 import DataInterfaces.ICtrlPoblacio;
+import DataInterfaces.ICtrlTipusHabitacio;
 import DomainFactories.AdapterFactory;
 import DomainFactories.CtrlDataFactory;
 import DomainModel.Client;
@@ -16,6 +17,7 @@ import DomainModel.Habitacio;
 import DomainModel.Hotel;
 import DomainModel.Poblacio;
 import DomainModel.Reserva;
+import DomainModel.TipusHabitacio;
 import Hibernate.HibernateUtil;
 import TupleTypes.DadesHotel;
 import TupleTypes.DadesReserva;
@@ -67,19 +69,22 @@ public class CasUsReservarHabitacio {
         this.dataInici = dIni;
         this.dataFi = dFi;
         
-        //aquest atribut no hi era al contracte original però és còmode emmagatzemar-lo per retornar-lo amb la resta de dades
+        /**aquest atribut no hi era al contracte original però és còmode
+         * emmagatzemar-lo per retornar-lo amb la resta de dades.
+         */
         this.numOcup = numOcup;
         return buscar.obteResultat();   
     }
     
     public DadesReserva seleccionarHabitacio(String hotel, String tipusHab) throws Exception{
-        
         CtrlDataFactory cdf = CtrlDataFactory.getInstance();
         ICtrlHotel ch = cdf.getCtrlHotel();
         Hotel h = ch.get(hotel);
+        ICtrlTipusHabitacio cth = cdf.getCtrlTipusHabitacio();
+        TipusHabitacio th = cth.get(tipusHab);
         nomHotel = hotel;
         tipusHabitacio = tipusHab;
-        numHabitacio = h.obteNumeroHabLliure(nomHotel, dataInici, dataFi);
+        numHabitacio = th.obteNumeroHabLliure(nomHotel, dataInici, dataFi);
         preuTotal = h.obtePreuTotal(tipusHabitacio, dataInici, dataFi);
         DadesReserva result = new DadesReserva();
         result.dIni = this.dataInici;
