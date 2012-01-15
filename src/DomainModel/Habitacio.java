@@ -13,7 +13,8 @@ import java.util.Set;
  * @author lluisgh28
  */
 public class Habitacio {
-    Integer numero;
+
+    //Integer numero; Forma part de la id, necessària per Hibernate.
     Hotel hotel;
     Set<Reserva> reserves = new HashSet<Reserva>();
     
@@ -35,9 +36,8 @@ public class Habitacio {
      * @param hotel
      * @param nomTipus 
      */
-    public Habitacio(HabitacioId id, Integer numero, Hotel hotel, String nomTipus) {
+    public Habitacio(HabitacioId id, Hotel hotel, String nomTipus) {
         this.id = id;
-        this.numero = numero;
         this.hotel = hotel;
         this.nomTipus = nomTipus;
     }
@@ -93,15 +93,7 @@ public class Habitacio {
      * @return 
      */
     public Integer getNumero() {
-        return numero;
-    }
-
-    /**
-     * Setter del número. Requerit per Hibernate.
-     * @param numero 
-     */
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+        return id.getNumero();
     }
 
     /**
