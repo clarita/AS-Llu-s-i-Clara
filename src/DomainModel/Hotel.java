@@ -162,26 +162,6 @@ public class Hotel {
          
         return p*dies;
     }
-
-    
-    /**
-     * retorna el número d'habitació lliure que troba primer que es del tipus tipushab i que esta lliure 
-     * entre les dates datainici i dataFi
-     * @param tipushab
-     * @param datainici
-     * @param dataFi
-     * @return num
-     */
-    public Integer obteNumeroHabLliure(String tipushab, Date dataInici, Date dataFi){
-        Integer num = 0;
-        for(PreuTipusHabitacio p : preus){
-            if(p.isOfType(tipushab)){
-                num = p.obteNumeroHabLliure(nom, dataInici, dataFi);
-                break;
-            }
-        }
-        return num;
-    }
     
     /**
      * retorna un booleà que indica si l'hotel està diponible, a més, retona una tupla amb 
@@ -216,13 +196,6 @@ public class Hotel {
         }
         return !habs.isEmpty();
     }
-
-    
-    /*
-    public void afComentari(Comentari c) {
-        comentaris.add(c);
-    }*/
-    
     
     /**
      * fa la mitja de les avalucions dels comentaris que té l'hotel
@@ -235,12 +208,10 @@ public class Hotel {
             for(Comentari c : comentaris){
                 suma = suma + c.getAvaluacio();
             }
-        
             return suma/comentaris.size();
         }
         return 0;
-    }
-    
+    }   
 }
 
 
