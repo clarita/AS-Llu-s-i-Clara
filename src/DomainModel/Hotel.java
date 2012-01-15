@@ -174,6 +174,9 @@ public class Hotel {
      * @return cert si l'hotel està disponible, false altrament.
      */
     public boolean estaDisp(Date dIni, Date dFi, Integer numOc, DadesHotel dh) {
+        //NOTA: el diagrama corregit d'aquesta operació es pot trobar al document
+        //adjunt a la practica
+        
         Set<DadesHabitacio> habs = new HashSet<DadesHabitacio>();
 
         for(PreuTipusHabitacio p : preus){
@@ -201,7 +204,6 @@ public class Hotel {
      * fa la mitja de les avalucions dels comentaris que té l'hotel
      * @return 
      */
-    
     private float mitjaAval(){
         Integer suma = 0;
         if(!comentaris.isEmpty()){

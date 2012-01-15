@@ -62,7 +62,8 @@ public class Poblacio {
     }
     
     /**
-     * retorna una tupla amb la informació de l'hotel disponible entre les dates dIni i dFi, i les seves habitacions disponibles
+     * retorna una tupla amb la informació dels hotels disponibles entre les dates 
+     * dIni i dFi, i les seves habitacions disponibles
      * que tinguin capacitat per a NumOcup
      * @param dIni 
      * @param dFi
@@ -81,13 +82,5 @@ public class Poblacio {
         return dadesDisponibles;
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

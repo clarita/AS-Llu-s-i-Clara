@@ -21,8 +21,7 @@ public class PercentDiscountPreuStrategy implements IPreuStrategy {
     }
     
     /**
-     * Creadora amb parametre de descompte
-     * @param perc 
+     * Creadora complerta
      */
     public PercentDiscountPreuStrategy(PreuTipusHabitacioId id, float perc){
         this.id = id;
@@ -33,6 +32,7 @@ public class PercentDiscountPreuStrategy implements IPreuStrategy {
      * Setter de l'identificador del PreuTipusHabitació associat
      * @param id 
      */
+    @Override
     public void setId(PreuTipusHabitacioId id){
         this.id = id;
     }
@@ -41,6 +41,7 @@ public class PercentDiscountPreuStrategy implements IPreuStrategy {
      * Getter del PreuTipusHabitació associat
      * @return 
      */
+    @Override
     public PreuTipusHabitacioId getId() {
         return this.id;
     }

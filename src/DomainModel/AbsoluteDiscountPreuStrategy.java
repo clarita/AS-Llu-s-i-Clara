@@ -17,8 +17,7 @@ public class AbsoluteDiscountPreuStrategy implements IPreuStrategy {
     }
     
     /**
-     * Creadora amb parametre de descompte
-     * @param descompte 
+     * Creadora complerta
      */
     public AbsoluteDiscountPreuStrategy(PreuTipusHabitacioId id, float descompte){
         this.id = id;
@@ -29,6 +28,7 @@ public class AbsoluteDiscountPreuStrategy implements IPreuStrategy {
      * Setter de l'identificador del preutipushabitacio associat
      * @param id 
      */
+    @Override
     public void setId(PreuTipusHabitacioId id){
         this.id = id;
     }
@@ -37,6 +37,7 @@ public class AbsoluteDiscountPreuStrategy implements IPreuStrategy {
      * Getter de l'identificador del preutipushabitacio associat
      * @return 
      */
+    @Override
     public PreuTipusHabitacioId getId() {
         return this.id;
     }

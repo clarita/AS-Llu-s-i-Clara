@@ -20,6 +20,13 @@ public class PreuTipusHabitacio {
         this.preu = 0;
     }
     
+    /**
+     * Creadora complerta
+     * @param id
+     * @param preu
+     * @param tipus
+     * @param strategy 
+     */
     public PreuTipusHabitacio(PreuTipusHabitacioId id, float preu, TipusHabitacio tipus, IPreuStrategy strategy){
         this.id = id;
         this.preu = preu;

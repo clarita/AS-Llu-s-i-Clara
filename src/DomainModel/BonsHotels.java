@@ -18,7 +18,7 @@ public class BonsHotels {
     private float quotaVariable = 0;
     
     /**
-     * Creadora privada, s'ha d'accedir des de fora a través de getInstance() 
+     * Creadora hauria de ser privada, s'ha d'accedir des de fora a través de getInstance() 
      * però es manté pública per Hibernate
      */
     public BonsHotels() {
