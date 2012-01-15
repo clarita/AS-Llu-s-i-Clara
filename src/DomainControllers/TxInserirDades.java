@@ -135,19 +135,13 @@ public class TxInserirDades {
     
     private void carregaHabitacions() {
         String[] nomsHotels = {"Palace","Hilton","Metropolitan","Arts","Catalunya","Pensión Pepe","Bonjour","Oulala"};
-        TipusHabitacio[] tipus = {
-            (TipusHabitacio) session.get(TipusHabitacio.class, "Individual"),
-            (TipusHabitacio) session.get(TipusHabitacio.class, "Doble"),
-            (TipusHabitacio) session.get(TipusHabitacio.class, "Matrimoni")
-        };
+        String[] nomsTipus = {"Individual","Doble","Matrimoni"};
         float[] preus = {100,200,250};
         for(int i = 0; i < nomsHotels.length; ++i){
-            for(int j = 0; j < tipus.length; ++j){
+            for(int j = 0; j < nomsTipus.length; ++j){
                 Habitacio h = new Habitacio();
                 h.setId(new HabitacioId(nomsHotels[i],j));
-                tipus[j].getHabitacions().add(h);
-                h.setNomTipus(tipus[j].getNom());
-                session.saveOrUpdate(tipus[j]);
+                h.setNomTipus(nomsTipus[j]);
                 session.persist(h);
             }
         }
