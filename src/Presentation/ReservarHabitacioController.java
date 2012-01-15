@@ -2,6 +2,7 @@ package Presentation;
 
 import DomainControllers.CasUsReservarHabitacio;
 import DomainControllers.TxInserirDades;
+import Hibernate.HibernateUtil;
 import TupleTypes.DadesHotel;
 import TupleTypes.DadesReserva;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.hibernate.Session;
 
 /**
  *
@@ -185,6 +187,8 @@ public class ReservarHabitacioController {
      * @author clara
      */
     public void PrOkMissatgeFi() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.getTransaction().commit();
         vista.tanca();
     }
     
