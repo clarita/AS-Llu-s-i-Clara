@@ -26,6 +26,7 @@ public class ComentariTest {
     static String nomPoblacio = "poblacio prova";
     static String dniC = "39476969S";
     static String descripcio = "comentari de prova";
+    static String nomCategoria = "Categoria prova";
     static Date d = new Date();
   
     public ComentariTest() {
@@ -39,7 +40,9 @@ public class ComentariTest {
             
             Poblacio poblacio = new Poblacio(nomPoblacio);
             session.persist(poblacio);
-            Hotel hotel = new Hotel(nomH,"descripcio",nomPoblacio,null);
+            CategoriaHotel categoria = new CategoriaHotel(nomCategoria);
+            session.persist(categoria);
+            Hotel hotel = new Hotel(nomH,"descripcio",nomPoblacio, categoria);
             session.persist(hotel);
             Client client = new Client(dniC,"nom prova","cognom","email");
             session.persist(client);

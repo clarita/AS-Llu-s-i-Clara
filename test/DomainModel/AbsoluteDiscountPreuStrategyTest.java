@@ -21,6 +21,8 @@ public class AbsoluteDiscountPreuStrategyTest {
     //variables per Hibernate
     private static String nomHotel = "hotel de prova";
     private static String nomTipus = "tipus de prova";
+    private static String nomPoblacio = "poblacio prova";
+    private static String nomCategoria = "categoria prova";
     private static float preu = 100;
     private static float descompte = 50;
     
@@ -35,8 +37,11 @@ public class AbsoluteDiscountPreuStrategyTest {
     
             PreuTipusHabitacioId id = new PreuTipusHabitacioId(nomHotel,nomTipus);
             AbsoluteDiscountPreuStrategy adps = new AbsoluteDiscountPreuStrategy(id,descompte);
-            Hotel hotel = new Hotel();
-            hotel.setNom(nomHotel);
+            Poblacio p = new Poblacio(nomPoblacio);
+            session.persist(p);
+            CategoriaHotel ch = new CategoriaHotel(nomCategoria);
+            session.persist(ch);
+            Hotel hotel = new Hotel(nomHotel, "desc", nomPoblacio, ch);
             session.persist(hotel);
             TipusHabitacio tipus = new TipusHabitacio(nomTipus,3,"desc");
             session.persist(tipus);
@@ -67,6 +72,9 @@ public class AbsoluteDiscountPreuStrategyTest {
             session.delete(hotel);
             TipusHabitacio tipus = (TipusHabitacio) session.get(TipusHabitacio.class, nomTipus);
             session.delete(tipus);
+            
+            session.delete(session.get(CategoriaHotel.class, nomCategoria));
+            session.delete(session.get(Poblacio.class, nomPoblacio));
             
             session.getTransaction().commit();
         }

@@ -66,6 +66,7 @@ public class HabitacioTest {
         session.persist(p);
         
         CategoriaHotel categoria = new CategoriaHotel(nomCategoria);
+        session.persist(categoria);
         
         Hotel h = new Hotel(nomHotel, desc, poblacio, categoria);
         session.persist(h);
@@ -96,9 +97,11 @@ public class HabitacioTest {
             TipusHabitacio t = (TipusHabitacio) session.get(TipusHabitacio.class, nomTipusHab);
             session.delete(t);
             
+            CategoriaHotel ch = (CategoriaHotel) session.get(CategoriaHotel.class, nomCategoria);
+            session.delete(ch);
+            
             session.getTransaction().commit();
         }
-
     }
     
     @Before
