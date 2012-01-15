@@ -125,10 +125,11 @@ public class CasUsReservarHabitacio {
         Reserva r = new Reserva(dataInici, dataFi, preuTotal, dniClient, nomHotel, numHabitacio);
         
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.saveOrUpdate(r);
+        session.persist(r);
         
         //tot i que en els diagrames ho feiem des de reserva, aquesta opció no genera acoblament
         //entre Reserva i Habitació (la navegabilitat que tenim és la inversa)
         h.afReserva(r);
+        session.saveOrUpdate(h);
     }
 }
