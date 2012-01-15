@@ -151,8 +151,6 @@ public class Window4 extends javax.swing.JFrame {
 
         preuTotalValueLabel.setText("jLabel2");
 
-        numTargTextField.setText("jTextField7");
-
         dniValueLabel.setText("jLabel2");
 
         nomValueLabel.setText("jLabel2");
@@ -161,7 +159,7 @@ public class Window4 extends javax.swing.JFrame {
 
         emailValueLabel.setText("jLabel2");
 
-        dataCadTextField.setText("jFormattedTextField1");
+        dataCadTextField.setText("dd/mm/aaaa");
         dataCadTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dataCadTextFieldActionPerformed(evt);

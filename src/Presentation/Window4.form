@@ -315,9 +315,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="numTargTextField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField7"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dniValueLabel">
       <Properties>
@@ -341,7 +338,7 @@
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="dataCadTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jFormattedTextField1"/>
+        <Property name="text" type="java.lang.String" value="dd/mm/aaaa"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataCadTextFieldActionPerformed"/>
