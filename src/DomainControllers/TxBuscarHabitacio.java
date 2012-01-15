@@ -4,12 +4,9 @@ import DataInterfaces.ICtrlPoblacio;
 import DomainFactories.CtrlDataFactory;
 import DomainModel.Poblacio;
 import TupleTypes.DadesHotel;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Controlador transacció per la logica de la funcionalitat buscar habitació
