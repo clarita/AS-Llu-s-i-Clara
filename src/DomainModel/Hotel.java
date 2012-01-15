@@ -112,7 +112,6 @@ public class Hotel {
     /**
      * Setter del string nomPoblacio
      * @param nomPoblacio 
-     * @author clara
      */
     public void setNomPoblacio(String nomPoblacio) {
         this.nomPoblacio = nomPoblacio;
@@ -121,7 +120,6 @@ public class Hotel {
     /**
      * Getter del string nomPoblacio
      * @return 
-     * @author clara
      */
     public String getNomPoblacio() {
         return this.nomPoblacio;

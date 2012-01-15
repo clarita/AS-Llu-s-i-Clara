@@ -69,7 +69,6 @@ public class Poblacio {
      * @param NumOcup
      * @return res
      */
-    
     public Set<DadesHotel> getDisponibles(Date dIni, Date dFi, Integer NumOcup) throws Exception{
         Set<DadesHotel> dadesDisponibles = new HashSet<DadesHotel>();
         for(Hotel h: hotels){
