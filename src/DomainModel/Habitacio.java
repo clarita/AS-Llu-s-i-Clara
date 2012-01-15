@@ -22,7 +22,7 @@ public class Habitacio {
     String nomTipus;
     
     /**
-     * Creadora per defecte
+     * Creadora per defecte. Requerida per Hibernate.
      */
     public Habitacio() {    
     }
