@@ -7,7 +7,7 @@ package DataInterfaces;
 import DomainModel.BonsHotels;
 
 /**
- * Aquesta interficie no constava al lliurament 1, pero es necessaria si volem 
+ * Aquesta interfície no constava al lliurament 1, pero es necessaria si volem 
  * recuperar les dades de BonsHotels de la base de dades (tot i que en aquest 
  * prototipus no es fan servir)
  * @author clara

@@ -205,12 +205,10 @@ public class Window3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelaActionPerformed
-        // TODO add your handling code here:
          viewController.tanca();
     }//GEN-LAST:event_cancelaActionPerformed
 
     private void dacordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dacordActionPerformed
-        // TODO add your handling code here:
         String dni = this.dniValueTextField.getText().toString();
         if(dni.length() > 0){
             viewController.confirmacioWindow3(dni);

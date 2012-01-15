@@ -10,7 +10,8 @@ import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 
 /**
- *
+ * Controlador de capa de gestió de dades encarregat de recuperar
+ * instàncies de tipus d'habitació.
  * @author lluisgh28
  */
 public class CtrlTipusHabitacio implements ICtrlTipusHabitacio{

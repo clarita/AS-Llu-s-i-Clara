@@ -172,7 +172,6 @@ public class ReservarHabitacioView {
             window1.mostraMissatge(missatge);
         }
         else if(windowIndex == 3) window3.mostraError(missatge);
-       // else window4.mostraError(missatge);
     }
     
     /**

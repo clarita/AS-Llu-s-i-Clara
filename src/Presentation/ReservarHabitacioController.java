@@ -183,7 +183,7 @@ public class ReservarHabitacioController {
     
     /**
      * Confirmació de final
-     * @author clara
+     * @author clara i lluisgh28
      */
     public void PrOkMissatgeFi() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

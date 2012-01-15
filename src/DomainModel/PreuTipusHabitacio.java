@@ -115,7 +115,6 @@ public class PreuTipusHabitacio {
      * instància.
      */
     public boolean isOfType(String tipus) {
-        //TODO: arreglar amb el tipus correcte
         return this.tipus.getNom().equals(tipus);
     }
     

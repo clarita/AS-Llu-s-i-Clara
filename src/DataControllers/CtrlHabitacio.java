@@ -7,8 +7,8 @@ import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 
 /**
- * Contrlador de cada de gestió de dades encarregat de recuperar 
- * instancies d'habitacions.
+ * Controlador de capa de gestió de dades encarregat de recuperar 
+ * instàncies d'habitacions.
  * @author clara
  */
 public class CtrlHabitacio implements ICtrlHabitacio {

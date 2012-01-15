@@ -9,8 +9,8 @@ import org.hibernate.Session;
 
 
 /**
- * Controlador de cada de gestió de dades encarregat de recuperar 
- * instancies de poblacions.
+ * Controlador de capa de gestió de dades encarregat de recuperar 
+ * instàncies de poblacions.
  * @author clara
  */
 public class CtrlPoblacio implements ICtrlPoblacio{

@@ -302,7 +302,6 @@ public class Window4 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
         
     private void dataCadTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataCadTextFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_dataCadTextFieldActionPerformed
 
     private void cancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelaActionPerformed
