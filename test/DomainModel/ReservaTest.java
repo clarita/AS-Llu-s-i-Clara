@@ -126,12 +126,17 @@ public class ReservaTest {
     }
     
     @Test
-    public void testFetch() {
-        
+    public void testHibernateFetch() {
+        Reserva r = (Reserva) session.get(Reserva.class, idReserva);
+        assertEquals(r.getIdReserva(), idReserva);
     }
     
+    /**
+     * Tot i que cal comprovar les insercions de Reserva, ja que durant l'execució
+     * dels casos d'ús es produiran, ja ho fem al setUp class.
+     */
     @Test
-    public void testInsert() {
+    public void testHibernateInsert() {
         
     }
 }
