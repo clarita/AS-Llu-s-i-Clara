@@ -174,12 +174,11 @@ public class ReservarHabitacioController {
             domini.pagament(numTarg, dCad);
             vista.mostraMissatgeFi();
         }catch(Exception e){
-           if(e.getMessage().equals("serveiNoDisponible")){
+           if(e.getMessage() != null && e.getMessage().equals("serveiNoDisponible")){
                 vista.mostraMissatge("Error en el pagament",4);
            }
-           
+           else e.printStackTrace();
         }
-        
     }
     
     /**
