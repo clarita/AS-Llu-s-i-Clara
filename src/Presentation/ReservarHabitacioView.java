@@ -155,6 +155,14 @@ public class ReservarHabitacioView {
     }
     
     /**
+     * 
+     * @author lluisgh28
+     */
+    public void confirmacioWindow5() {
+        controlador.PrOkMissatgeFi();
+    }
+    
+    /**
      * Mostra el missatge corresponent a la message area
      * @param missatge 
      * @author clara i elena  

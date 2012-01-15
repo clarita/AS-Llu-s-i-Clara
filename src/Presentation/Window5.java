@@ -19,6 +19,7 @@ public class Window5 extends javax.swing.JFrame {
     /** Creates new form Window5 */
     public Window5(ReservarHabitacioView viewController) {
         this.viewController = viewController;
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
     }
 
@@ -41,7 +42,7 @@ public class Window5 extends javax.swing.JFrame {
         jButton1.setText("D'acord");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                dacordActionPerformed(evt);
             }
         });
 
@@ -72,11 +73,9 @@ public class Window5 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            // TODO add your handling code here:
-        //tanca l'aplicacio
-         viewController.tanca();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void dacordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dacordActionPerformed
+        viewController.confirmacioWindow5();
+    }//GEN-LAST:event_dacordActionPerformed
 
     /**
      * @param args the command line arguments

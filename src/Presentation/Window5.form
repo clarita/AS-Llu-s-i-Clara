@@ -60,7 +60,7 @@
         <Property name="text" type="java.lang.String" value="D&apos;acord"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dacordActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
