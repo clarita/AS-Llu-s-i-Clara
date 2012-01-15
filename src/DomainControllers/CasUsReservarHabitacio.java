@@ -27,7 +27,7 @@ import java.util.Set;
 import org.hibernate.Session;
 
 /**
- *
+ * Controlador del cas d'ús Reservar Habitació.
  * @author lluisgh28
  */
 public class CasUsReservarHabitacio {
@@ -41,9 +41,16 @@ public class CasUsReservarHabitacio {
     Integer numHabitacio;
     Float preuTotal;
     
-    
+    /**
+     * Creadora per defecte.
+     */
     public CasUsReservarHabitacio() {};
     
+    /**
+     * Retorna una llista amb totes les poblacions que hi ha al sistema.
+     * @return
+     * @throws Exception 
+     */
     public ArrayList<String> obtePoblacions() throws Exception {
         
         CtrlDataFactory cdf = CtrlDataFactory.getInstance();
@@ -60,7 +67,17 @@ public class CasUsReservarHabitacio {
         return result;
     }
     
-        
+    /**
+     * Retorna les habitacions d'hotel de la població pob que tenen una
+     * capacitat més gran o igual que numOcup i que estan disponibles entre les
+     * dates dIni i dFi.
+     * @param pob
+     * @param dIni
+     * @param dFi
+     * @param numOcup
+     * @return
+     * @throws Exception 
+     */    
     public Set<DadesHotel> buscarHabitacio(String pob, Date dIni, Date dFi, Integer numOcup) throws Exception{
         
         TxBuscarHabitacio buscar = new TxBuscarHabitacio(pob, dIni, dFi, numOcup);
@@ -69,13 +86,22 @@ public class CasUsReservarHabitacio {
         this.dataInici = dIni;
         this.dataFi = dFi;
         
-        /**aquest atribut no hi era al contracte original però és còmode
-         * emmagatzemar-lo per retornar-lo amb la resta de dades.
+        /**
+         * L'atribut numOcup no hi era al contracte original, però és còmode
+         * emmagatzemar-lo per a retornar-lo amb la resta de dades.
          */
         this.numOcup = numOcup;
         return buscar.obteResultat();   
     }
     
+    /**
+     * Retorna les dades de l'habitació seleccionada que és de l'hotel i del
+     * tipus donats.
+     * @param hotel
+     * @param tipusHab
+     * @return
+     * @throws Exception 
+     */
     public DadesReserva seleccionarHabitacio(String hotel, String tipusHab) throws Exception{
         CtrlDataFactory cdf = CtrlDataFactory.getInstance();
         ICtrlHotel ch = cdf.getCtrlHotel();
@@ -97,6 +123,13 @@ public class CasUsReservarHabitacio {
         return result;
     }
     
+    /**
+     * Retorna les dades de la reserva, és a dir, les dades de l'habitació
+     * reservada i les del client que realitza la reserva.
+     * @param dni
+     * @return
+     * @throws Exception 
+     */
     public DadesReserva introduirDni(String dni) throws Exception {
         
         CtrlDataFactory cdf = CtrlDataFactory.getInstance();
@@ -118,7 +151,13 @@ public class CasUsReservarHabitacio {
         return result;
     }
     
-    
+    /**
+     * Realitza el pagament de la reserva i crea una nova reserva amb les dades
+     * que s'han obtingut en la resta del cas d'ús.
+     * @param numTarg
+     * @param dCad
+     * @throws Exception 
+     */
     public void pagament(String numTarg, Date dCad) throws Exception {
         IPagamentAdapter pa = AdapterFactory.getInstance().getPagamentAdapter();
         pa.pagament(numTarg, dCad, preuTotal);
