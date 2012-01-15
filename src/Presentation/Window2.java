@@ -157,7 +157,6 @@ public class Window2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        //TODO: agafar els correctes
         if((currentHotel != null) && (currentTipus != null))
         viewController.confirmacioWindow2(currentHotel, currentTipus);
     }//GEN-LAST:event_okButtonActionPerformed
