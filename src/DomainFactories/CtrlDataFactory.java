@@ -9,11 +9,13 @@ import DataControllers.CtrlClient;
 import DataControllers.CtrlHabitacio;
 import DataControllers.CtrlHotel;
 import DataControllers.CtrlPoblacio;
+import DataControllers.CtrlTipusHabitacio;
 import DataInterfaces.ICtrlBonsHotels;
 import DataInterfaces.ICtrlClient;
 import DataInterfaces.ICtrlHabitacio;
 import DataInterfaces.ICtrlHotel;
 import DataInterfaces.ICtrlPoblacio;
+import DataInterfaces.ICtrlTipusHabitacio;
 
 /**
  *
@@ -26,6 +28,7 @@ public class CtrlDataFactory {
     private ICtrlClient ctrlClient;
     private ICtrlHabitacio ctrlHabitacio;
     private ICtrlBonsHotels ctrlBonsHotels;
+    private ICtrlTipusHabitacio ctrlTipusHabitacio;
     
     
     private CtrlDataFactory() {};
@@ -59,5 +62,9 @@ public class CtrlDataFactory {
         if(ctrlBonsHotels == null) ctrlBonsHotels = new CtrlBonsHotels();
         return ctrlBonsHotels;
     }
-        
+    
+    public ICtrlTipusHabitacio getCtrlTipusHabitacio() {
+        if (ctrlTipusHabitacio == null) ctrlTipusHabitacio = new CtrlTipusHabitacio();
+        return ctrlTipusHabitacio;
+    }
 }
